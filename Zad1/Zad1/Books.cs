@@ -13,11 +13,7 @@ namespace Zad1
         private string isbn;
         private int yearOfPublishment;
 
-        public string Autor
-        {
-            get { return autor; }
-            set { autor = value; }
-        }
+        public string Autor { get; set; }
 
         public string Title
         {
@@ -55,12 +51,7 @@ namespace Zad1
                 return false;
             }
         }
-
-
+        
     }
-
-
-
-
-    
+ 
 }
