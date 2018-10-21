@@ -9,11 +9,11 @@ namespace Zad1
 
     abstract class Egzemplarz
     {
-        protected int id;
+        protected int id; //klucz
         protected string tytul;
         protected Boolean stan;
         protected Boolean zarezerwowany;
-        protected Rodzaj rodzajEgz; // TODO
+        protected Rodzaj rodzajEgz; 
         protected int licznikWypozyczen;
 
         public int Id { get; set; }

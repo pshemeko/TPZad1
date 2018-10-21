@@ -47,6 +47,7 @@
     <Compile Include="BazaEgzemplarzy.cs" />
     <Compile Include="Books.cs" />
     <Compile Include="Czasopismo.cs" />
+    <Compile Include="DataContext.cs" />
     <Compile Include="Ksiazka.cs" />
     <Compile Include="OpisStanuEgzemplarza.cs" />
     <Compile Include="Rodzaj.cs" />
