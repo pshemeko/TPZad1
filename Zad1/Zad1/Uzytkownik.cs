@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 
 namespace Zad1
 {
-    class Uzytkownik
+    public class Uzytkownik         //TODO zrobic jako klasa abstrakcyjna
     {
         private string imie;
         private string nazwisko;
         private int pesel;
         private string adres;
 
-        public string Imie { get; set; }
+        
+        public string Imie
+        {
+            get { return imie; }
+            set { imie = value; }
+        }
 
         public string Nazwisko
         {

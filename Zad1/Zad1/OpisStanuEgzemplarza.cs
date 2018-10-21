@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace Zad1
 {
-    class OpisStanuEgzemplarza
+    public class OpisStanuEgzemplarza
     {
 
         protected DateTime dataZakupu;
-        protected Boolean stan;
+        protected Boolean stan; // dostepny istnieje
+        protected string opisStanu; // w jakim jest stanie co zniszczone
         protected Egzemplarz ktoryEgzemplarz;
 
         public DateTime DataZakupu { get; set; }
         public Boolean Stan { get; set; }
         public Egzemplarz KtoryEgzemplarz { get; set; }
-
+        public string OpisStanu { get; set; }
 
         public override string ToString()
         {
-            string s = ktoryEgzemplarz + " Data zakupu " + dataZakupu + "\n";
+            string s = ktoryEgzemplarz + " Data zakupu " + dataZakupu + "Stan:" + opisStanu + "\n";
             return s;
         }
 

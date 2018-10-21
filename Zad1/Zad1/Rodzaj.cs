@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Zad1
 {
-    enum Rodzaj : byte
+    public enum Rodzaj : byte
     {
         kryminal,
         romans,
         popularno_naukowy,
-        powiesc
+        powiesc,
+        fantastyka
     };
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zad1
 {
-    class Zdarzenie
+    public class Zdarzenie
     {
         protected Uzytkownik kto;
         protected Egzemplarz co;

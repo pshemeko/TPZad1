@@ -10,9 +10,19 @@ namespace Zad1
     {
         static void Main(string[] args)
         {
-            OpisStanuEgzemplarza opisStanu;
-            Zdarzenie zdarzenie;
 
+            
+            Wypelnianie wypelnia = new WypelnianieStalymi();
+            DataContext dataConstexx = new DataContext();
+            //wypelnij.Wypelnij(ref dataConstexx);
+
+            DataRepository repozytorium = new DataRepository()
+            {
+                DataContex = dataConstexx,
+                Wypelniacz = wypelnia
+            };
+
+            
         }
     }
 }

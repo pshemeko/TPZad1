@@ -56,6 +56,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Uzytkownik.cs" />
+    <Compile Include="Wypelnianie.cs" />
+    <Compile Include="WypelnianieStalymi.cs" />
     <Compile Include="Zdarzenie.cs" />
   </ItemGroup>
   <ItemGroup>

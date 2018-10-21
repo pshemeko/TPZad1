@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Zad1
 {
-    class DataContext
+    public class DataContext
     {
         public List<Uzytkownik> listaUzytkownikow;
         public Dictionary<int, Egzemplarz> ksiazki;

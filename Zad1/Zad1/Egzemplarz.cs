@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Zad1
 {
 
-    abstract class Egzemplarz
+    abstract public class Egzemplarz
     {
         protected int id; //klucz
         protected string tytul;
