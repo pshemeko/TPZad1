@@ -10,6 +10,9 @@ namespace Zad1
     {
         static void Main(string[] args)
         {
+            OpisStanuEgzemplarza opisStanu;
+            Zdarzenie zdarzenie;
+
         }
     }
 }
