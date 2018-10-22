@@ -11,14 +11,14 @@ namespace Zad1
     public class DataContext
     {
         public List<Uzytkownik> listaUzytkownikow;
-        public Dictionary<int, Egzemplarz> ksiazki;
+        public Dictionary<int, Egzemplarz> egzemplarze;
         public ObservableCollection<Zdarzenie> zdarzenia;
         public List<OpisStanuEgzemplarza> opisStanow;
 
         public DataContext()
         {
             listaUzytkownikow = new List<Uzytkownik>();
-            ksiazki = new Dictionary<int, Egzemplarz>();
+            egzemplarze = new Dictionary<int, Egzemplarz>();
             zdarzenia = new ObservableCollection<Zdarzenie>();
             opisStanow = new List<OpisStanuEgzemplarza>();
 

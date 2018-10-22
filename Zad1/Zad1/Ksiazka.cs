@@ -13,6 +13,8 @@ namespace Zad1
         protected string nazwiskoAutora;
         protected string isbn;
 
+        public static int kara_Za_Dzien = 3;
+
         public int IloscStron {get; set;}
         public string ImieAutora { get; set; }
         public string NazwiskoAutora { get; set; }
