@@ -109,6 +109,12 @@ namespace Zad1
         }
 
         ////// TODO jak zwrocic wszystkie Ksiazki - Egzemplarze
+        //
+
+
+        ///// TODO jak zwrocic wszyskie Zdarzenia ????
+
+        /////
         ///
 
         public List<OpisStanuEgzemplarza> GetAllOpisStanuEgzemplarzas()
@@ -116,11 +122,7 @@ namespace Zad1
             return dataContext.opisStanow;
         }
 
-        ///// TODO jak zwrocic wszyskie Zdarzenia ????
 
-
-        /////
-        ///
         public void UpdateUzytkownik(Uzytkownik stary, Uzytkownik nowy)
         {
             stary.Adres = nowy.Adres;
