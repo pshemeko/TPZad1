@@ -8,6 +8,7 @@ namespace Zad1
 {
     class Books
     {
+        //moje zmiany
         private string autor;
         private string title;
         private string isbn;
