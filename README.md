@@ -2,3 +2,4 @@
 Technologie programowania zadanie1
 
 testowanko
+teraz ja
