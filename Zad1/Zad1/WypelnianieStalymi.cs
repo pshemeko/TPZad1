@@ -34,8 +34,9 @@ namespace Zad1
             Egzemplarz e1 = new Ksiazka(1, "c# lekykon kieszonkowy", Rodzaj.popularno_naukowy, 199, "Joseph", "Albahari", "978-83-283-2446-6");
             Egzemplarz e2 = new Ksiazka(2, "Rzeżnik drzew", Rodzaj.fantastyka, 479, "Andrzej", "Pilipiuk", "978-83-7574-937-3");
 
-            contex.ksiazki.Add(e1.Id, e1);
-            contex.ksiazki.Add(e2.Id, e2);
+            contex.egzemplarze.Add(e1.Id, e1);
+            contex.egzemplarze.Add(e2.Id, e2);
+            //contex.egzemplarze.Add(e1.Id, e1);
 
             //// wypelniam zdarzenia
 
