@@ -8,12 +8,11 @@ namespace Zad1
 {
     public class OpisStanuEgzemplarza
     {
-
+        protected Egzemplarz ktoryEgzemplarz;
         protected DateTime dataZakupu;
         protected Boolean stan; // dostepny istnieje
         protected string opisStanu; // w jakim jest stanie co zniszczone
-        protected Egzemplarz ktoryEgzemplarz;
-
+        
         public DateTime DataZakupu { get; set; }
         public Boolean Stan { get; set; }
         public Egzemplarz KtoryEgzemplarz { get; set; }

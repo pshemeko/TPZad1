@@ -11,14 +11,20 @@ namespace Zad1
         private DataContext dataContext;
         private Wypelnianie wypelniacz;
 
+        public DataRepository(Wypelnianie wyp)
+        {
+            this.wypelniacz = wyp;
+        }
+
         public DataContext DataContex
         {
             set => dataContext = value;
         }
-        public Wypelnianie Wypelniacz
-        {
-            set => wypelniacz = value;
-        }
+
+        //public Wypelnianie Wypelniacz
+        //{
+        //    set => wypelniacz = value;
+        //}
 
         public void Wypelnij()
         {
@@ -47,7 +53,7 @@ namespace Zad1
             dataContext.zdarzenia.Add(zd1);
         }
 
-        public void AddZdarzenieZwrot(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz, DateTime dataZwrotu)
+        public void AddZdarzenieZwrot(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz, DateTime dataZwrotu) // TODO moze zmien by przyjmowalo Zdarzenie
         {
             Zdarzenie zd1 = new Zdarzenie();
             zd1.Kto = uz;
@@ -72,7 +78,7 @@ namespace Zad1
 
         /// Get
 
-        public Uzytkownik GetUzytkownika(int pesel) //// TODO sprawdz czy dziala
+        public Uzytkownik GetUzytkownika(int pesel) //// TODO sprawdz czy dziala  - zmieni ja zeb inaczej dzialala
         {
             Predicate<Uzytkownik> predykat = FindPoints;
 
@@ -108,14 +114,21 @@ namespace Zad1
             return dataContext.listaUzytkownikow;
         }
 
-        ////// TODO jak zwrocic wszystkie Ksiazki - Egzemplarze
-        //
+        public IEnumerable<Egzemplarz> GetAllEgzemplarze()
+        {
+            //return dataContext.egzemplarze.Values;
 
+            var lista = from Egzemplarz e in dataContext.egzemplarze.Values
+                        select e;
+            return lista;
+        }
 
-        ///// TODO jak zwrocic wszyskie Zdarzenia ????
+        public IEnumerable<Zdarzenie> GetAllZdarzenia()
+        {
+            return from Zdarzenie e in dataContext.zdarzenia
+                   select e;
+        }
 
-        /////
-        ///
 
         public List<OpisStanuEgzemplarza> GetAllOpisStanuEgzemplarzas()
         {
@@ -123,6 +136,7 @@ namespace Zad1
         }
 
 
+        //Update
         public void UpdateUzytkownik(Uzytkownik stary, Uzytkownik nowy)
         {
             stary.Adres = nowy.Adres;
@@ -160,25 +174,41 @@ namespace Zad1
         ////// Delete
         ///
 
-        public void DeleteUzytkownik(Uzytkownik uz)
+        public Boolean DeleteUzytkownik(Uzytkownik uz)
         {
-            dataContext.listaUzytkownikow.Remove(uz);
+            return dataContext.listaUzytkownikow.Remove(uz);
         }
 
-        public void DeleteEgzemplarz(int klucz)
+        public Boolean DeleteEgzemplarz(int klucz)
         {
-            dataContext.egzemplarze.Remove(klucz);
+            return dataContext.egzemplarze.Remove(klucz);
         }
 
-        public void DeleteZdarzenie(Zdarzenie zd)
+        public Boolean DeleteZdarzenie(Zdarzenie zd)
         {
-            dataContext.zdarzenia.Remove(zd);
+            return dataContext.zdarzenia.Remove(zd);
         }
 
-        public void DeleteOpisStanuEgzemplarza(OpisStanuEgzemplarza ose)
+        public Boolean DeleteOpisStanuEgzemplarza(OpisStanuEgzemplarza ose)
         {
-            dataContext.opisStanow.Remove(ose);
+            return dataContext.opisStanow.Remove(ose);
         }
+
+        //// tylko do testu potem skasuj
+        ///
+        public string pokaz_wszystkich_uzytkownikow()
+        {
+            string s = "";
+            foreach (var item in dataContext.listaUzytkownikow)
+            {
+               s+= item.ToString();
+            }
+            //return dataContext.listaUzytkownikow.ToString();
+            return s;
+        }
+
+
+
 
     }
 }

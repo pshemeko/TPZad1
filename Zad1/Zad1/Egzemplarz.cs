@@ -16,7 +16,13 @@ namespace Zad1
         protected Rodzaj rodzajEgz; 
         protected int licznikWypozyczen;
 
-        public int Id { get; set; }
+        //public int Id //{ get; set; }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         public string Tytul { get; set; }
         public Boolean Stan { get; set; }
         public Boolean Zarezerwowany { get; set; }

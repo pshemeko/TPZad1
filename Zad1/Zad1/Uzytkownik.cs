@@ -40,7 +40,7 @@ namespace Zad1
 
         public override string ToString()
         {
-            string ret = "Czytelnik: " + imie + " " + nazwisko + " Adress: " + adres + " Pesel: " + pesel;
+            string ret = "Uzytkownik: " + imie + " " + nazwisko + " Adress: " + adres + " Pesel: " + pesel + "\n";
             return ret;
         }
 

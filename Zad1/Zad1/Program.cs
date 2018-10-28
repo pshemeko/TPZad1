@@ -14,15 +14,47 @@ namespace Zad1
             
             Wypelnianie wypelnia = new WypelnianieStalymi();
             DataContext dataConstexx = new DataContext();
-            //wypelnij.Wypelnij(ref dataConstexx);
 
-            DataRepository repozytorium = new DataRepository()
+
+            DataRepository repozytorium = new DataRepository(wypelnia);
             {
-                DataContex = dataConstexx,
-                Wypelniacz = wypelnia
+                repozytorium.DataContex = dataConstexx;
+                //DataContex = dataConstexx;
+                //Wypelniacz = wypelnia
+                
             };
+                     
+            DataService data_serwis= new DataService(repozytorium);
 
-            
+            // //serwis.UsunUzytkownika()
+            Uzytkownik uzy1 = new Uzytkownik();
+            uzy1.Adres = "Piotk";
+            uzy1.Imie = "Olek";
+            uzy1.Nazwisko = "maly";
+            uzy1.Pesel = 12345;
+
+            repozytorium.Wypelnij();
+            Console.WriteLine(repozytorium.pokaz_wszystkich_uzytkownikow());
+            Console.WriteLine("\ndodalem ludka \n\n");
+            repozytorium.AddUzytkownika(uzy1);
+            Console.WriteLine(repozytorium.pokaz_wszystkich_uzytkownikow());
+
+            Console.WriteLine("\nusunalem uzytkownika\n");
+            repozytorium.DeleteUzytkownik(uzy1);
+            Console.WriteLine(repozytorium.pokaz_wszystkich_uzytkownikow());
+
+
+
+            //data_serwis.DodajUzytkownika(uzy1);
+
+            //Console.WriteLine(serwis.WyswietlUzytkownikow);
+            //data_serwis.UsunUzytkownika(uzy1);
+            ////serwis.UsunUzytkownika(uzy1);
+
+            //Console.WriteLine(serwis.WyswietlUzytkownikow());
+
+            Console.WriteLine("DUPA :-)");
+            Console.ReadKey();
         }
     }
 }

@@ -22,7 +22,8 @@ namespace Zad1
 
         public override string ToString()
         {
-            string s = "Wypożyczone przez: " + kto + " Wypozyczyl " + co + "Data wypożyczenia " + kiedyWypozyczyl + " Data zwrotu " + kiedyZwrocil;
+            //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
+                string s = " Pozyczyl " + co + "Data wypożyczenia " + kiedyWypozyczyl + " Data zwrotu " + kiedyZwrocil;
             if (kara>0) s+= " kara: " + kara + "zl.";
             return s;
         }
