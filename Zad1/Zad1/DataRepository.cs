@@ -20,12 +20,7 @@ namespace Zad1
         {
             set => dataContext = value;
         }
-
-        //public Wypelnianie Wypelniacz
-        //{
-        //    set => wypelniacz = value;
-        //}
-
+        
         public void Wypelnij()
         {
             wypelniacz.Wypelnij(ref dataContext);
@@ -49,38 +44,58 @@ namespace Zad1
             dataContext.zdarzenia.Add(zd);
         }
 
-        public void AddZdarzenieWypozyczenie(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz)
+        // wywalic te funkcje potem bo te funkcje sa juz w dataService
+        //public void AddZdarzenieWypozyczenie(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz)
+        //{
+        //    Zdarzenie zd1 = new Zdarzenie();
+        //    zd1.Kto = uz;
+        //    zd1.Co = eg;
+        //    zd1.KiedyWypozyczyl = dataWypoz;
+        //    zd1.KiedyZwrocil = dataWypoz;
+        //    dataContext.zdarzenia.Add(zd1);
+        //}
+        //public void AddZdarzenieZwrot(Zdarzenie zd)
+        //{
+        //    //TODO
+        //    if(dataContext.zdarzenia.Contains(zd))
+        //    {
+        //        dataContext.zdarzenia.
+        //    }
+        //    foreach (var item in dataContext.zdarzenia.as)
+        //    {
+        //        item.
+        //    }
+        //}
+
+        //public void AddZdarzenieZwrot(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz, DateTime dataZwrotu) // TODO moze wywal
+        //{
+        //    Zdarzenie zd1 = new Zdarzenie();
+        //    zd1.Kto = uz;
+        //    zd1.Co = eg;
+        //    zd1.KiedyWypozyczyl = dataWypoz;
+        //    zd1.KiedyWypozyczyl = dataZwrotu;
+        //    zd1.Kara = (dataZwrotu - dataWypoz).Days;
+        //    //TimeSpan wynik = dataZwrotu - dataWypoz;
+        //    //zd1.Kara = wynik.Days;
+        //    dataContext.zdarzenia.Add(zd1);
+        //}
+
+
+        public void AddOpisStanuEgzemplarza(OpisStanuEgzemplarza opisStanu)
         {
-            Zdarzenie zd1 = new Zdarzenie();
-            zd1.Kto = uz;
-            zd1.Co = eg;
-            zd1.KiedyWypozyczyl = dataWypoz;
-            zd1.KiedyZwrocil = dataWypoz;
-            dataContext.zdarzenia.Add(zd1);
+            dataContext.opisStanow.Add(opisStanu);
         }
 
-        public void AddZdarzenieZwrot(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz, DateTime dataZwrotu) // TODO moze wywal
-        {
-            Zdarzenie zd1 = new Zdarzenie();
-            zd1.Kto = uz;
-            zd1.Co = eg;
-            zd1.KiedyWypozyczyl = dataWypoz;
-            zd1.KiedyWypozyczyl = dataZwrotu;
-            zd1.Kara = (dataZwrotu - dataWypoz).Days;
-            //TimeSpan wynik = dataZwrotu - dataWypoz;
-            //zd1.Kara = wynik.Days;
-            dataContext.zdarzenia.Add(zd1);
-        }
-
-        public void AddOpisStanuEgzemplarza(DateTime dataZakupu, Boolean dostepna, string opisStanu, Egzemplarz ktoryEgzemplarz)
-        {
-            OpisStanuEgzemplarza ose = new OpisStanuEgzemplarza();
-            ose.DataZakupu = dataZakupu;
-            ose.Dostepna = dostepna;
-            ose.OpisStanu = opisStanu;
-            ose.KtoryEgzemplarz = ktoryEgzemplarz;
-            dataContext.opisStanow.Add(ose);
-        }
+        // zmienilem te funkcje bo chyba lepiej tak w tej klasie robic
+        //public void AddOpisStanuEgzemplarza(DateTime dataZakupu, Boolean dostepna, string opisStanu, Egzemplarz ktoryEgzemplarz)
+        //{
+        //    OpisStanuEgzemplarza ose = new OpisStanuEgzemplarza();
+        //    ose.DataZakupu = dataZakupu;
+        //    ose.Dostepna = dostepna;
+        //    ose.OpisStanu = opisStanu;
+        //    ose.KtoryEgzemplarz = ktoryEgzemplarz;
+        //    dataContext.opisStanow.Add(ose);
+        //}
 
         /// ******************** Get
 
@@ -107,7 +122,7 @@ namespace Zad1
             return dataContext.zdarzenia[nr];
         }
 
-        public OpisStanuEgzemplarza GetOpisStanuEgzemplarza(int nr)
+        public OpisStanuEgzemplarza GetOpisStanuEgzemplarzaNr(int nr)
         {
             return dataContext.opisStanow[nr];
         }
@@ -136,7 +151,7 @@ namespace Zad1
         }
 
 
-        public List<OpisStanuEgzemplarza> GetAllOpisStanuEgzemplarzas()
+        public List<OpisStanuEgzemplarza> GetAllOpisStanuEgzemplarza()
         {
             return dataContext.opisStanow;
         }
@@ -154,7 +169,7 @@ namespace Zad1
         public void UpdateEgzemplarz(Egzemplarz stary, Egzemplarz nowy)
         {
             stary.Id = nowy.Id;
-            stary.LicznikWypozyczen = nowy.LicznikWypozyczen;
+            //stary.LicznikWypozyczen = nowy.LicznikWypozyczen;
             stary.Tytul = nowy.Tytul;
             stary.RodzajEgz = nowy.RodzajEgz;
         }

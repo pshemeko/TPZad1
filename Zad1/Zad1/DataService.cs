@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Zad1
 {
     class DataService
@@ -46,46 +47,7 @@ namespace Zad1
             }
             return s;
         }
-        //public string WyswietlEgzemlarz(IEnumerable<Egzemplarz> obj)
-        //{
-        //    string st = "";
-        //    foreach (Egzemplarz uz in obj)
-        //    {
-        //        st += uz + "\n";
-        //    }
-        //    return st;
-        //}
-
-   
-        //public string WyswietlZdarzenie(IEnumerable<Zdarzenie> obj)
-        //{
-        //    string st = "";
-        //    foreach (Zdarzenie uz in obj)
-        //    {
-        //        st += uz + "\n";
-        //    }
-        //    return st;
-        //}
-
-        //public string WyswietlOpisStanuEgzemplarza(IEnumerable<OpisStanuEgzemplarza> obj)
-        //{
-        //    string st = "";
-        //    foreach (OpisStanuEgzemplarza uz in obj)
-        //    {
-        //        st += uz + "\n";
-        //    }
-        //    return st;
-        //}
-
-
-        //TODO jak zrobic te funkcje bo nie mam fukcji w DataRepository
-        //public string WyswietlCalaZawartosc()
-        //{
-        //    string st = "";
-        //    foreach (Egzemplarz eg in repozytorium.)
-
-        //}
-
+       
  
         //TODO czy nie trzeba dodac tutaj  jeszcze wysietlania Zdarzen
         public string WyswietlanieDanychPowiazanych()
@@ -165,37 +127,58 @@ namespace Zad1
         public Boolean Wypozycz(Uzytkownik uz, Egzemplarz eg) // wypozycz
         {
             Boolean czyWypozyczy = false;
-            IEnumerable<OpisStanuEgzemplarza> bookStates = this.repozytorium.GetAllOpisStanuEgzemplarzas();
-            Boolean czyDostepna = false;
-            foreach (var item in bookStates)
-            {
-                if( item.KtoryEgzemplarz == eg)
-                {
-                    czyDostepna = item.Dostepna;
-                }
-            }
-           // repozytorium.GetAllZdarzenia();
-            if(repozytorium.GetAllUzytkownikow().Contains(uz) && czyDostepna)
-            {
-                Zdarzenie zd = new Zdarzenie();
-                zd.Co = eg;
-                zd.Kto = uz;
-                zd.KiedyWypozyczyl = DateTime.Now;
-                zd.KiedyZwrocil = zd.KiedyWypozyczyl;
 
-                repozytorium.AddZdarzenie(zd);
-                // stawiam ze wypozyczona
-                foreach (var item in bookStates)
+            if (repozytorium.GetAllUzytkownikow().Contains(uz))
+            {
+
+                //List<OpisStanuEgzemplarza> stany = this.repozytorium.GetAllOpisStanuEgzemplarza();
+                //Boolean czyDostepna = false;
+
+                Predicate<OpisStanuEgzemplarza> predykat = CzyEgzemplarz;
+
+                bool CzyEgzemplarz(OpisStanuEgzemplarza opis)
                 {
-                    if (item.KtoryEgzemplarz == eg)
-                    {
-                        item.Dostepna = false;
-                    }
+                    return opis.Equals(eg);
                 }
 
-                czyWypozyczy = true;
+                OpisStanuEgzemplarza znalezionyOpis = repozytorium.GetAllOpisStanuEgzemplarza().Find(predykat);
+
+                //foreach (var item in stany)
+                //{
+                //    if( item.KtoryEgzemplarz == eg)
+                //    {
+                //        czyDostepna = item.Dostepna;
+
+                //    }
+                //}
+
+                //Boolean czyDostepna = znalezionyOpis.Dostepna;
+                // repozytorium.GetAllZdarzenia();
+                if (znalezionyOpis.Dostepna)
+                {
+                    Zdarzenie zd = new Zdarzenie();
+                    zd.Co = eg;
+                    zd.Kto = uz;
+                    zd.KiedyWypozyczyl = DateTime.Now;
+                    zd.KiedyZwrocil = zd.KiedyWypozyczyl;
+
+                    repozytorium.AddZdarzenie(zd);
+                    // stawiam ze wypozyczona
+                    //foreach (var item in stany)
+                    //{
+                    //    if (item.KtoryEgzemplarz == eg)
+                    //    {
+                    //        item.Dostepna = false;
+                    //    }
+                    //}
+                    znalezionyOpis.Dostepna = false;
+                    czyWypozyczy = true;
+                    znalezionyOpis.LicznikWypozyczen = znalezionyOpis.LicznikWypozyczen + 1;    // zwiekrzam licznik wyypozyczen
+
+                }
 
             }
+
             return czyWypozyczy;
            // repozytorium.AddZdarzenie(zdarz);
         }
@@ -207,14 +190,14 @@ namespace Zad1
             {
                 if (item.Co == eg && item.Kto == uz)    // gdy znajde tego uzytkownika i ten egzemplarz
                 {
-                    if(item.KiedyWypozyczyl != item.KiedyZwrocil) // i gdy to zdarzenie jest ostatnio dodane tj nie jest wczesniejszy wypozyczeniem ksiazki
+                    if(item.KiedyWypozyczyl == item.KiedyZwrocil) // i gdy to zdarzenie jest ostatnio dodane tj nie jest wczesniejszy wypozyczeniem ksiazki
                                                                     // bo cyba przy utworzeniu nowego data zwrtu est ta sama co wypozyczenia
                     {
                         item.KiedyZwrocil = DateTime.Now;
                         var roznica = (item.KiedyZwrocil - item.KiedyWypozyczyl).TotalDays;
-                        if ( roznica > 20)
+                        if ( roznica > Constans.LIMIT_DNI_WYPOZYCZENIA)
                         {
-                            item.Kara = (int)roznica * 50;
+                            item.Kara = (int)roznica * Constans.KWOTA_KARY_ZA_DZIEN;
                         }
                     }
                 }

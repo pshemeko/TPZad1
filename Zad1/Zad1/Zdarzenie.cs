@@ -14,6 +14,15 @@ namespace Zad1
         protected DateTime kiedyZwrocil;
         protected int kara;
 
+        //public Zdarzenie (Uzytkownik uzytkownik, Egzemplarz egzemplarz, DateTime dataWypozyczenia, DateTime dataZwrotu, int kara)
+        //{
+        //    this.kto = uzytkownik;
+        //    this.co = egzemplarz;
+        //    this.kiedyWypozyczyl = dataWypozyczenia;
+        //    this.kiedyZwrocil = dataZwrotu;
+        //    this.kara = kara;                 
+        //}
+
         public Uzytkownik Kto { get; set; }
         public Egzemplarz Co { get; set;}
         public DateTime KiedyWypozyczyl { get; set; }
@@ -23,7 +32,8 @@ namespace Zad1
         public override string ToString()
         {
             //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-                string s = " Pozyczyl " + co + "Data wypożyczenia " + kiedyWypozyczyl + " Data zwrotu " + kiedyZwrocil;
+            string s = " Pozyczyl " + co + "Data wypożyczenia " + kiedyWypozyczyl;
+            if(kiedyWypozyczyl != kiedyZwrocil) s+= " Data zwrotu " + kiedyZwrocil;
             if (kara>0) s+= " kara: " + kara + "zl.";
             return s;
         }

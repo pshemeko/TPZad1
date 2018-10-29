@@ -14,7 +14,7 @@ namespace Zad1
         //protected Boolean stan;
         //protected Boolean zarezerwowany;
         protected Rodzaj rodzajEgz; 
-        protected int licznikWypozyczen;
+        
 
         //public int Id //{ get; set; }
         public int Id
@@ -27,14 +27,14 @@ namespace Zad1
         //public Boolean Stan { get; set; }
         //public Boolean Zarezerwowany { get; set; }
         public Rodzaj RodzajEgz {get; set;}
-        public int LicznikWypozyczen { get; set; }
+       
 
         public Egzemplarz(int id, string tytul,Rodzaj rodzajEgz)
         {
             this.id = id;
             this.tytul = tytul;
             this.rodzajEgz = rodzajEgz;
-            this.licznikWypozyczen = 0;
+           // this.licznikWypozyczen = 0;
         }
 
         public override string ToString()
@@ -59,8 +59,7 @@ namespace Zad1
             if (obj is Egzemplarz)
             {
                 var tempBook = (Egzemplarz)obj;
-                return id.Equals(tempBook.id) && tytul.Equals(tempBook.tytul) && licznikWypozyczen.Equals(tempBook.licznikWypozyczen) 
-                    && rodzajEgz.Equals(tempBook.rodzajEgz);
+                return id.Equals(tempBook.id) && tytul.Equals(tempBook.tytul) && rodzajEgz.Equals(tempBook.rodzajEgz);//&& licznikWypozyczen.Equals(tempBook.licznikWypozyczen) 
             }
             else
             {

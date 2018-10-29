@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Audiobook.cs" />
     <Compile Include="BazaEgzemplarzy.cs" />
-    <Compile Include="Books.cs" />
+    <Compile Include="Constans.cs" />
     <Compile Include="Czasopismo.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataRepository.cs" />
