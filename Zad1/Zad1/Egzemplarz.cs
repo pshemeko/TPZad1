@@ -11,8 +11,8 @@ namespace Zad1
     {
         protected int id; //klucz
         protected string tytul;
-        protected Boolean stan;
-        protected Boolean zarezerwowany;
+        //protected Boolean stan;
+        //protected Boolean zarezerwowany;
         protected Rodzaj rodzajEgz; 
         protected int licznikWypozyczen;
 
@@ -24,17 +24,15 @@ namespace Zad1
         }
 
         public string Tytul { get; set; }
-        public Boolean Stan { get; set; }
-        public Boolean Zarezerwowany { get; set; }
-        //public RodzajEgz {get; set;}
+        //public Boolean Stan { get; set; }
+        //public Boolean Zarezerwowany { get; set; }
+        public Rodzaj RodzajEgz {get; set;}
         public int LicznikWypozyczen { get; set; }
 
         public Egzemplarz(int id, string tytul,Rodzaj rodzajEgz)
         {
             this.id = id;
             this.tytul = tytul;
-            this.stan = true;
-            this.zarezerwowany = false;
             this.rodzajEgz = rodzajEgz;
             this.licznikWypozyczen = 0;
         }
@@ -42,15 +40,15 @@ namespace Zad1
         public override string ToString()
         {
             string ret = "Identyfikator: " + id + " Rodzaj: " + rodzajEgz;
-            if (stan)
-            {
-                ret += " Egzmplarz dostepny";
-            }
-            else {
-                ret += " Egzemplarz Niedostepny";
-            }
+            //if (stan)
+            //{
+            //    ret += " Egzmplarz dostepny";
+            //}
+            //else {
+            //    ret += " Egzemplarz Niedostepny";
+            //}
 
-            if (zarezerwowany) ret += " Egzemplarz ZAREZERWOWANY!";
+            //if (zarezerwowany) ret += " Egzemplarz ZAREZERWOWANY!";
 
             ret += " Tytul: " + tytul;
             return ret;
@@ -61,8 +59,8 @@ namespace Zad1
             if (obj is Egzemplarz)
             {
                 var tempBook = (Egzemplarz)obj;
-                return id.Equals(tempBook.id) && tytul.Equals(tempBook.tytul) && licznikWypozyczen.Equals(tempBook.licznikWypozyczen);
-               
+                return id.Equals(tempBook.id) && tytul.Equals(tempBook.tytul) && licznikWypozyczen.Equals(tempBook.licznikWypozyczen) 
+                    && rodzajEgz.Equals(tempBook.rodzajEgz);
             }
             else
             {

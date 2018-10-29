@@ -77,7 +77,7 @@ namespace Zad1
                 DataZakupu = new DateTime(2017, 1, 2, 13, 10, 0),
                 KtoryEgzemplarz = e1,
                 OpisStanu = "Nowa bez uszkodzen",
-                Stan = true
+                Dostepna = true
             };
 
             OpisStanuEgzemplarza oe2 = new OpisStanuEgzemplarza
@@ -85,7 +85,7 @@ namespace Zad1
                 DataZakupu = new DateTime(2017, 1, 2, 13, 10, 0),
                 KtoryEgzemplarz = e2,
                 OpisStanu = "uszkodzony róg na 4 stronie",
-                Stan = true
+                Dostepna = true
             };
 
             contex.opisStanow.Add(oe1);

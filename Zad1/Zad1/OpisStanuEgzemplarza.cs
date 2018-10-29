@@ -10,11 +10,11 @@ namespace Zad1
     {
         protected Egzemplarz ktoryEgzemplarz;
         protected DateTime dataZakupu;
-        protected Boolean stan; // dostepny istnieje
+        protected Boolean dostepna; // czy egzemplarz jest dostepny
         protected string opisStanu; // w jakim jest stanie co zniszczone
         
         public DateTime DataZakupu { get; set; }
-        public Boolean Stan { get; set; }
+        public Boolean Dostepna { get; set; }
         public Egzemplarz KtoryEgzemplarz { get; set; }
         public string OpisStanu { get; set; }
 
@@ -29,7 +29,7 @@ namespace Zad1
             if (obj is OpisStanuEgzemplarza)
             {
                 OpisStanuEgzemplarza tmp = (OpisStanuEgzemplarza)obj;
-                return dataZakupu.Equals(tmp.dataZakupu) && ktoryEgzemplarz.Equals(tmp.ktoryEgzemplarz) && stan.Equals(tmp.stan);
+                return dataZakupu.Equals(tmp.dataZakupu) && ktoryEgzemplarz.Equals(tmp.ktoryEgzemplarz) && dostepna.Equals(tmp.dostepna);
             }
             else
             {

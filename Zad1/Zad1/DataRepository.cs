@@ -32,8 +32,8 @@ namespace Zad1
         }
 
         ////TODO dodaj inne metody by dodawac elementy jak dodaj/usun/zmien Egzemplarz, Uzytkownika - uwaga rozne klasy bo dziedziczenie
-        ///
-        //Add
+        
+        // ******************** Add
         public void AddUzytkownika(Uzytkownik uz)
         {
             dataContext.listaUzytkownikow.Add(uz);
@@ -44,16 +44,22 @@ namespace Zad1
             dataContext.egzemplarze.Add(eg.Id, eg);
         }
 
+        public void AddZdarzenie(Zdarzenie zd)
+        {
+            dataContext.zdarzenia.Add(zd);
+        }
+
         public void AddZdarzenieWypozyczenie(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz)
         {
             Zdarzenie zd1 = new Zdarzenie();
             zd1.Kto = uz;
             zd1.Co = eg;
             zd1.KiedyWypozyczyl = dataWypoz;
+            zd1.KiedyZwrocil = dataWypoz;
             dataContext.zdarzenia.Add(zd1);
         }
 
-        public void AddZdarzenieZwrot(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz, DateTime dataZwrotu) // TODO moze zmien by przyjmowalo Zdarzenie
+        public void AddZdarzenieZwrot(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz, DateTime dataZwrotu) // TODO moze wywal
         {
             Zdarzenie zd1 = new Zdarzenie();
             zd1.Kto = uz;
@@ -66,17 +72,17 @@ namespace Zad1
             dataContext.zdarzenia.Add(zd1);
         }
 
-        public void AddOpisStanuEgzemplarza(DateTime dataZakupu, Boolean stan, string opisStanu, Egzemplarz ktoryEgzemplarz)
+        public void AddOpisStanuEgzemplarza(DateTime dataZakupu, Boolean dostepna, string opisStanu, Egzemplarz ktoryEgzemplarz)
         {
             OpisStanuEgzemplarza ose = new OpisStanuEgzemplarza();
             ose.DataZakupu = dataZakupu;
-            ose.Stan = stan;
+            ose.Dostepna = dostepna;
             ose.OpisStanu = opisStanu;
             ose.KtoryEgzemplarz = ktoryEgzemplarz;
             dataContext.opisStanow.Add(ose);
         }
 
-        /// Get
+        /// ******************** Get
 
         public Uzytkownik GetUzytkownika(int pesel) //// TODO sprawdz czy dziala  - zmieni ja zeb inaczej dzialala
         {
@@ -107,8 +113,8 @@ namespace Zad1
         }
 
 
-        /////
-        ///
+        // ******************** GET ALL
+
         public List<Uzytkownik> GetAllUzytkownikow()
         {
             return dataContext.listaUzytkownikow;
@@ -136,7 +142,7 @@ namespace Zad1
         }
 
 
-        //Update
+        // ******************** Update
         public void UpdateUzytkownik(Uzytkownik stary, Uzytkownik nowy)
         {
             stary.Adres = nowy.Adres;
@@ -149,9 +155,8 @@ namespace Zad1
         {
             stary.Id = nowy.Id;
             stary.LicznikWypozyczen = nowy.LicznikWypozyczen;
-            stary.Stan = nowy.Stan;
             stary.Tytul = nowy.Tytul;
-            stary.Zarezerwowany = nowy.Zarezerwowany;
+            stary.RodzajEgz = nowy.RodzajEgz;
         }
 
         public void UpdateZdarzenie(Zdarzenie stary, Zdarzenie nowy)
@@ -168,11 +173,11 @@ namespace Zad1
             stary.DataZakupu = nowy.DataZakupu;
             stary.KtoryEgzemplarz = nowy.KtoryEgzemplarz;
             stary.OpisStanu = nowy.OpisStanu;
-            stary.Stan = nowy.Stan;
+            stary.Dostepna = nowy.Dostepna;
         }
 
-        ////// Delete
-        ///
+        ////// 
+        // ******************** Delete
 
         public Boolean DeleteUzytkownik(Uzytkownik uz)
         {
@@ -194,8 +199,8 @@ namespace Zad1
             return dataContext.opisStanow.Remove(ose);
         }
 
-        //// tylko do testu potem skasuj
-        ///
+        //// ******************** wyswietlanie
+
         public string pokaz_wszystkich_uzytkownikow()
         {
             string s = "";
@@ -207,8 +212,6 @@ namespace Zad1
             return s;
         }
 
-
-
-
+        
     }
 }
