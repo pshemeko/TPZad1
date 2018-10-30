@@ -13,6 +13,21 @@ namespace Zad1
         private int pesel;
         private string adres;
 
+        // ajo na potrzeby XML
+        public Uzytkownik(string imie, string nazwisko, int pesel, string adres)
+        {
+            this.imie = imie;
+            this.nazwisko = nazwisko;
+            this.pesel = pesel;
+            this.adres = adres;
+        }
+
+        //pusty by to co wczesniej sie kompilowalo
+        public Uzytkownik()
+        {
+
+        }
+
         
         public string Imie
         {

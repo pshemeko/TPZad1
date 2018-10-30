@@ -74,6 +74,7 @@
     <Compile Include="Uzytkownik.cs" />
     <Compile Include="Wypelnianie.cs" />
     <Compile Include="WypelnianieStalymi.cs" />
+    <Compile Include="WypelnianieXMLLinq.cs" />
     <Compile Include="Zdarzenie.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,18 @@ namespace Zad1
             this.isbn = isbn;
         }
 
+        // ajo ctor na potrzeby XML bez rodzaju
+        public Ksiazka(int id, string tytul, int iloscStron, string imieAutora, string nazwiskoAutora, string isbn)
+    : base(id, tytul)
+        {
+            this.iloscStron = iloscStron;
+            this.imieAutora = imieAutora;
+            this.nazwiskoAutora = nazwiskoAutora;
+            this.isbn = isbn;
+        }
+
+
+
         public override string ToString()
         {
             string ret = base.ToString();

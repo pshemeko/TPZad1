@@ -37,6 +37,16 @@ namespace Zad1
            // this.licznikWypozyczen = 0;
         }
 
+        // ajo ctor na potrzemy XMLa bez rodzaju
+        public Egzemplarz(int id, string tytul)
+        {
+            this.id = id;
+            this.tytul = tytul;
+
+        }
+
+
+
         public override string ToString()
         {
             string ret = "Id: " + id.ToString() + " Rodzaj: " + rodzajEgz.ToString();
