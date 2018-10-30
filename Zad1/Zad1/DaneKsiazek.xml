@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ksiazki>
+  <ksiazka>
+    <id>11</id>
+    <tytul>Pan Tadeusz</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>1000</iloscStron>
+    <imieAutora>Adam</imieAutora>
+    <nazwiskoAutora>Mickiewicz</nazwiskoAutora>
+    <isbn>123-123-123-123</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>12</id>
+    <tytul>Liryki lozanskie</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>1000</iloscStron>
+    <imieAutora>Adam</imieAutora>
+    <nazwiskoAutora>Mickiewicz</nazwiskoAutora>
+    <isbn>222-222-222-222</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>13</id>
+    <tytul>Zbrodnia i kara</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>300</iloscStron>
+    <imieAutora>Fiodor</imieAutora>
+    <nazwiskoAutora>Dostojewski</nazwiskoAutora>
+    <isbn>333-333-333-333</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>14</id>
+    <tytul>Obcy</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>150</iloscStron>
+    <imieAutora>Albert</imieAutora>
+    <nazwiskoAutora>Camus</nazwiskoAutora>
+    <isbn>987-567-345-567</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>15</id>
+    <tytul>Ubadek</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>230</iloscStron>
+    <imieAutora>Albert</imieAutora>
+    <nazwiskoAutora>Camus</nazwiskoAutora>
+    <isbn>987-567-345-111</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>16</id>
+    <tytul>Nedznicy</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>230</iloscStron>
+    <imieAutora>Victor</imieAutora>
+    <nazwiskoAutora>Hugo</nazwiskoAutora>
+    <isbn>333-567-345-111</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>17</id>
+    <tytul>Nedznicy</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>230</iloscStron>
+    <imieAutora>Victor</imieAutora>
+    <nazwiskoAutora>Hugo</nazwiskoAutora>
+    <isbn>333-567-345-111</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>18</id>
+    <tytul>Nedznicy</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>230</iloscStron>
+    <imieAutora>Victor</imieAutora>
+    <nazwiskoAutora>Hugo</nazwiskoAutora>
+    <isbn>333-567-345-111</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>19</id>
+    <tytul>Pracownicy morza</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>230</iloscStron>
+    <imieAutora>Victor</imieAutora>
+    <nazwiskoAutora>Hugo</nazwiskoAutora>
+    <isbn>332-567-345-111</isbn>
+  </ksiazka>
+  <ksiazka>
+    <id>20</id>
+    <tytul>Czlowiek smiechu</tytul>
+    <rodzaj>powiesc</rodzaj>
+    <iloscStron>230</iloscStron>
+    <imieAutora>Victor</imieAutora>
+    <nazwiskoAutora>Hugo</nazwiskoAutora>
+    <isbn>123-567-345-111</isbn>
+  </ksiazka>
+</ksiazki>

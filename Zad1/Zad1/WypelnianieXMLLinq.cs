@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Web;
 
 namespace Zad1
 {
@@ -16,7 +17,8 @@ namespace Zad1
         {
 
             //dodajemy osoby
-            XDocument xml = XDocument.Load("DaneLudzi.xml");
+            XDocument xml = XDocument.Load("..//..//DaneLudzi.xml");
+            //XDocument xml = XDocument.Load("XMLfiles/Dane.xml");
 
             List<Uzytkownik> listaU = (
             from osoba in xml.Root.Elements("osoba")
@@ -43,7 +45,7 @@ namespace Zad1
             ////////////////////////////////////////////////////////////////////////////
             //dodajemy ksiazki
 
-            XDocument xmlKsiazki = XDocument.Load("DaneKsiazek.xml");
+            XDocument xmlKsiazki = XDocument.Load("..//..//DaneKsiazek.xml");
 
             List<Egzemplarz> lista = (
             from ksiazka in xmlKsiazki.Root.Elements("ksiazka")

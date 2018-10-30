@@ -19,8 +19,8 @@ namespace Zad1
         {
 
             
-            Wypelnianie wypelnia = new WypelnianieStalymi();
-           // Wypelnianie wypelnia = new WypelnianieXMLLinq();
+            //Wypelnianie wypelnia = new WypelnianieStalymi();
+            Wypelnianie wypelnia = new WypelnianieXMLLinq();
             DataContext dataConstexx = new DataContext();
 
 
