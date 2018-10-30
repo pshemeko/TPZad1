@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Zad1
 {
-    class DataService
+    public class DataService
     {
         private DataRepository repozytorium;
 

@@ -11,40 +11,98 @@ namespace Zad1.Tests
     [TestClass()]
     public class DataRepositoryTests
     {
-        /*
-        [TestMethod()]
-        public void WypelnijTest()
-        {
-            Assert.Fail();
-        }
 
-        [TestMethod()]
+        
+            Wypelnianie wypelnia = new WypelnianieStalymi();
+            DataContext dataConstexx = new DataContext();
+        
+
+    /*
+    [TestMethod()]
+    public void WypelnijTest()
+    {
+        Assert.Fail();
+    }
+    */
+    [TestMethod()]
         public void AddUzytkownikaTest()
         {
-            Assert.Fail();
+                       
+            DataRepository repozytorium = new DataRepository(wypelnia);
+            {
+                repozytorium.DataContex = dataConstexx;
+            };
+
+            //DataService data_serwis = new DataService(repozytorium);
+            ///
+
+            Uzytkownik uz = new Uzytkownik()
+            {
+                Adres = "Abramowskiego 1/7",
+                Imie = "Adam",
+                Nazwisko = "Andrzejczyk",
+                Pesel = 1234,
+            };
+
+            repozytorium.AddUzytkownika(uz);
+            Assert.AreEqual(repozytorium.GetUzytkownika(1234), uz);
+
         }
-        */
+        
         [TestMethod()]
         public void AddEgzemplarzTest()
         {
-            Assert.Fail();
+            DataRepository repozytorium = new DataRepository(wypelnia);
+            {
+                repozytorium.DataContex = dataConstexx;
+            };
+            Egzemplarz egz = new Ksiazka(111, "c# 6.0 Leksykon ieszonkowy", Rodzaj.popularno_naukowy, 200, "Joseph", "Albahari", "978-83-283-2446-6");
+
+            repozytorium.AddEgzemplarz(egz);
+            Assert.AreEqual(egz, repozytorium.GetEgzemplarz(111));
+                      
         }
 
         [TestMethod()]
         public void AddZdarzenieWypozyczenieTest()
         {
-            Assert.Fail();
+            DataRepository repozytorium = new DataRepository(wypelnia);
+            {
+                repozytorium.DataContex = dataConstexx;
+            };
+            Egzemplarz egz = new Ksiazka(111, "c# 6.0 Leksykon ieszonkowy", Rodzaj.popularno_naukowy, 200, "Joseph", "Albahari", "978-83-283-2446-6");
+
+            Uzytkownik uz = new Uzytkownik()
+            {
+                Adres = "Abramowskiego 1/7",
+                Imie = "Adam",
+                Nazwisko = "Andrzejczyk",
+                Pesel = 1234,
+            };
+
+            Zdarzenie zd = new Zdarzenie
+            {
+                Co = egz,
+                Kto = uz,
+                KiedyWypozyczyl = new DateTime(2018, 3, 1, 9, 0, 0), //01/03/2008 07:00:00
+                KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
+                Kara = 15,
+            };
+
+            repozytorium.AddZdarzenie(zd);
+            Assert.AreEqual(zd, repozytorium.GetZdarzenie(0));
         }
 
-        [TestMethod()]
-        public void AddZdarzenieZwrotTest()
-        {
-            Assert.Fail();
-        }
+        //[TestMethod()]
+        //public void AddZdarzenieZwrotTest()
+        //{
+        //    Assert.Fail();
+        //}
 
         [TestMethod()]
         public void AddOpisStanuEgzemplarzaTest()
         {
+
             Assert.Fail();
         }
 

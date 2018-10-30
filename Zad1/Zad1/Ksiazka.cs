@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zad1
 {
-    class Ksiazka : Egzemplarz
+    public class Ksiazka : Egzemplarz
     {
         protected int iloscStron;
         protected string imieAutora;
