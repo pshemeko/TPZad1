@@ -26,20 +26,20 @@ namespace Zad1
         public Uzytkownik Kto { get; set; }
         public Egzemplarz Co { get; set;}
         public DateTime KiedyWypozyczyl // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
-        {
-            get { return kiedyWypozyczyl; }
-            set { kiedyWypozyczyl = value; }
-        }
+            {
+                get { return kiedyWypozyczyl; }
+                set { kiedyWypozyczyl = value; }
+            }
         public DateTime KiedyZwrocil    // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
-        {
-            get { return kiedyZwrocil; }
-            set { kiedyZwrocil = value; }
-        }
+            {
+                get { return kiedyZwrocil; }
+                set { kiedyZwrocil = value; }
+            }
         public int Kara                 // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
-        {
-            get { return kara; }
-            set { kara = value; }
-        }
+            {
+                get { return kara; }
+                set { kara = value; }
+            }
 
         public override string ToString()
         {

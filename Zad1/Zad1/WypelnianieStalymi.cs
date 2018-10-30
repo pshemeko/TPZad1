@@ -23,7 +23,7 @@ namespace Zad1
             {
                 Imie = "Grzegorz",
                 Nazwisko = "Brzeczyszczykiewicz",
-                Pesel = 1,
+                Pesel = 111111,
                 Adres = "Chrzeszczygrzegoszyce powiad Łękołody"
             };
 
@@ -43,15 +43,15 @@ namespace Zad1
 
             string dateString = "5/1/2008 8:30:52 AM";
 
-            Zdarzenie z1 = new Zdarzenie();
-
-            z1.Kto = u1;
-            z1.Co = e1;
-            z1.KiedyWypozyczyl = DateTime.Parse(dateString,
-                                  System.Globalization.CultureInfo.InvariantCulture);
-            z1.KiedyZwrocil = DateTime.Now; // (2018, 3, 15, 13, 0, 0),
-                z1.Kara = 22;
-            
+            Zdarzenie z1 = new Zdarzenie()
+            {
+                Kto = u1,
+                Co = e1,
+                KiedyWypozyczyl = DateTime.Parse(dateString,
+                                  System.Globalization.CultureInfo.InvariantCulture),
+                KiedyZwrocil = DateTime.Now,
+                Kara = 22,
+            };
 
             Zdarzenie z2 = new Zdarzenie
             {

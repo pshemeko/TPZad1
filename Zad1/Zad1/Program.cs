@@ -74,11 +74,11 @@ namespace Zad1
 
             //////////////// serializuje do XML ze str http://www.altcontroldelete.pl/artykuly/xml-w-c-serializacja-obiektow-do-xmla/
             ///
-            List<Uzytkownik> oPersonsList = new List<Uzytkownik>(); // zamianst tego nasza liste dac
-            int nCounter = 0;
+            //List<Uzytkownik> oPersonsList = new List<Uzytkownik>(); // zamianst tego nasza liste dac
+            //int nCounter = 0;
             //oPersonsList.Add(new Uzytkownik(++nCounter, "Jan", "Kowalski", 23));
             //oPersonsList.Add(new Uzytkownik(++nCounter, "Agnieszka", "Nowak", 22));
-            oPersonsList.Add(uzy1);
+            //oPersonsList.Add(uzy1);
 
             XmlRootAttribute oRootAttr = new XmlRootAttribute();
             oRootAttr.ElementName = "Uzytownik";
@@ -87,8 +87,8 @@ namespace Zad1
             StreamWriter oStreamWriter = null;
             try
             {
-                oStreamWriter = new StreamWriter("dupaaaa.xml");
-                oSerializer.Serialize(oStreamWriter, oPersonsList);
+                oStreamWriter = new StreamWriter("dupaaaa.xml");    // w tym pliku zapisuje wszystkich uzytkownikow
+                oSerializer.Serialize(oStreamWriter, data_serwis.ZwrocWszystkichUzytkownikow());   // oPersonsList);
             }
             catch (Exception oException)
             {

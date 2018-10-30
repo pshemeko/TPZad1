@@ -111,6 +111,11 @@ namespace Zad1
             else throw new ArgumentException("tego uzytkownika nie ma w repozytorium" + uz.ToString());
         }
 
+        public List<Uzytkownik> ZwrocWszystkichUzytkownikow()
+        {
+            return repozytorium.GetAllUzytkownikow();
+        }
+
         // ********************** Egzemplarze **********************
 
         public void DodajEgzemplarz(Egzemplarz e)
