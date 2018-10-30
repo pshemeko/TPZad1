@@ -39,7 +39,7 @@ namespace Zad1
 
         public override string ToString()
         {
-            string ret = "Identyfikator: " + id + " Rodzaj: " + rodzajEgz;
+            string ret = "Identyfikator: " + id.ToString() + " Rodzaj: " + rodzajEgz.ToString();
             //if (stan)
             //{
             //    ret += " Egzmplarz dostepny";
@@ -50,7 +50,7 @@ namespace Zad1
 
             //if (zarezerwowany) ret += " Egzemplarz ZAREZERWOWANY!";
 
-            ret += " Tytul: " + tytul;
+            ret += " Tytul: " + tytul.ToString();
             return ret;
         }
 

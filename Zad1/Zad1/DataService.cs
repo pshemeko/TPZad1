@@ -23,10 +23,7 @@ namespace Zad1
         
 
         // TODO ktora z tych metod powinnabyc zaimplementowana
-        public string WyswietlUzytkownikow()
-        {
-            return repozytorium.pokaz_wszystkich_uzytkownikow();
-        }
+  
         //
         //public string WyswietlUzytkownikow(IEnumerable<Uzytkownik> obj)
         //{
@@ -73,6 +70,17 @@ namespace Zad1
         public string WyswietlWszystkichUzyt()
         {
             return repozytorium.pokaz_wszystkich_uzytkownikow();
+        }
+
+        public string WyswietlWzystkieZdarzenia()
+        {
+            string s = "";
+            foreach (var item in repozytorium.GetAllZdarzenia())
+            {
+                s += item.ToString() + "\n";
+            }
+
+            return s;
         }
 
         // ********************** Uzytkownicy **********************

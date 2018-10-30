@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
+using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+
 namespace Zad1
 {
     class Program
@@ -57,11 +64,64 @@ namespace Zad1
             Console.WriteLine("Wyswietlanie powiazanych");
 
             Console.WriteLine(data_serwis.WyswietlanieDanychPowiazanych());
-            
+
+            //data_serwis.
+            Console.WriteLine("Zdarzenia:");
+            ////TODO zle wyswietla daty a raczej źle przekazuje daty w Wypelnianie Stalymi - poprawic moze
+            Console.WriteLine(data_serwis.WyswietlWzystkieZdarzenia());
+
+
+
+            ////////////////serializuje
+            ///
+            List<Uzytkownik> oPersonsList = new List<Uzytkownik>();
+            int nCounter = 0;
+            //oPersonsList.Add(new Uzytkownik(++nCounter, "Jan", "Kowalski", 23));
+            //oPersonsList.Add(new Uzytkownik(++nCounter, "Agnieszka", "Nowak", 22));
+            oPersonsList.Add(uzy1);
+
+            XmlRootAttribute oRootAttr = new XmlRootAttribute();
+            oRootAttr.ElementName = "Uzytownik";
+            oRootAttr.IsNullable = true;
+            XmlSerializer oSerializer = new XmlSerializer(typeof(List<Uzytkownik>), oRootAttr);
+            StreamWriter oStreamWriter = null;
+            try
+            {
+                oStreamWriter = new StreamWriter("dupaaaa.xml");
+                oSerializer.Serialize(oStreamWriter, oPersonsList);
+            }
+            catch (Exception oException)
+            {
+                Console.WriteLine("Aplikacja wygenerowała następujący wyjątek: " + oException.Message);
+            }
+            finally
+            {
+                if (null != oStreamWriter)
+                {
+                    oStreamWriter.Dispose();
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             Console.WriteLine("DUPA :-)");
 
             Console.WriteLine(data_serwis.WyswietlEgzemlarze());
             Console.ReadKey();
+
         }
     }
 }

@@ -32,9 +32,9 @@ namespace Zad1
         public override string ToString()
         {
             //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-            string s = " Pozyczyl " + co + "Data wypożyczenia " + kiedyWypozyczyl;
-            if(kiedyWypozyczyl != kiedyZwrocil) s+= " Data zwrotu " + kiedyZwrocil;
-            if (kara>0) s+= " kara: " + kara + "zl.";
+            string s = " Pozyczył " + Co.ToString() + "Data wypożyczenia " + kiedyWypozyczyl;
+            if(kiedyWypozyczyl.Equals(kiedyZwrocil)) s+= " Data zwrotu " + kiedyZwrocil;
+            if (kara>0) s+= " kara: " + kara + "zł.";
             return s;
         }
 
