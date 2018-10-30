@@ -66,9 +66,9 @@ namespace Zad1
             Console.WriteLine(data_serwis.WyswietlanieDanychPowiazanych());
 
             //data_serwis.
-            Console.WriteLine("Zdarzenia:");
+            Console.WriteLine("Zdarzenia Wszystkie :");
             ////TODO zle wyswietla daty a raczej źle przekazuje daty w Wypelnianie Stalymi - poprawic moze
-            Console.WriteLine(data_serwis.WyswietlWzystkieZdarzenia());
+            Console.WriteLine(data_serwis.WyswietlWszystkieZdarzenia());
 
 
 

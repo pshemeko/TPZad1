@@ -72,7 +72,7 @@ namespace Zad1
             return repozytorium.pokaz_wszystkich_uzytkownikow();
         }
 
-        public string WyswietlWzystkieZdarzenia()
+        public string WyswietlWszystkieZdarzenia()
         {
             string s = "";
             foreach (var item in repozytorium.GetAllZdarzenia())

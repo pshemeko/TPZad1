@@ -25,17 +25,29 @@ namespace Zad1
 
         public Uzytkownik Kto { get; set; }
         public Egzemplarz Co { get; set;}
-        public DateTime KiedyWypozyczyl { get; set; }
-        public DateTime KiedyZwrocil { get; set; }
-        public int Kara { get; set; }
+        public DateTime KiedyWypozyczyl // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
+        {
+            get { return kiedyWypozyczyl; }
+            set { kiedyWypozyczyl = value; }
+        }
+        public DateTime KiedyZwrocil    // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
+        {
+            get { return kiedyZwrocil; }
+            set { kiedyZwrocil = value; }
+        }
+        public int Kara                 // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
+        {
+            get { return kara; }
+            set { kara = value; }
+        }
 
         public override string ToString()
         {
             //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-            string s = " Pozyczył " + Co.ToString() + "Data wypożyczenia " + kiedyWypozyczyl;
-            if(kiedyWypozyczyl.Equals(kiedyZwrocil)) s+= " Data zwrotu " + kiedyZwrocil;
+            string s = Co.ToString() + " Data wypożyczenia " + kiedyWypozyczyl.ToString();
+            if(!kiedyWypozyczyl.Equals(kiedyZwrocil)) s+= " Data zwrotu " + kiedyZwrocil;
             if (kara>0) s+= " kara: " + kara + "zł.";
-            return s;
+            return s + "\n";
         }
 
         public override bool Equals(object obj)

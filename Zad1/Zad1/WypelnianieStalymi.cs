@@ -40,22 +40,26 @@ namespace Zad1
 
             //// wypelniam zdarzenia
 
-            Zdarzenie z1 = new Zdarzenie
-            {
-                Kto = u1,
-                Co = e1,
-                KiedyWypozyczyl = new DateTime(2018, 3, 1, 9, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = new DateTime(2018, 3, 15, 13, 0, 0),
-                Kara = 0,
-            };
+
+            string dateString = "5/1/2008 8:30:52 AM";
+
+            Zdarzenie z1 = new Zdarzenie();
+
+            z1.Kto = u1;
+            z1.Co = e1;
+            z1.KiedyWypozyczyl = DateTime.Parse(dateString,
+                                  System.Globalization.CultureInfo.InvariantCulture);
+            z1.KiedyZwrocil = DateTime.Now; // (2018, 3, 15, 13, 0, 0),
+                z1.Kara = 22;
+            
 
             Zdarzenie z2 = new Zdarzenie
             {
                 Kto = u1,
                 Co = e2,
-                KiedyWypozyczyl = new DateTime(2018, 6, 8, 16, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = new DateTime(2018, 6, 15, 13, 0, 0),
-                Kara = 0,
+                KiedyWypozyczyl = Convert.ToDateTime(dateString),// new DateTime(2018, 6, 8, 16, 0, 0), //01/03/2008 07:00:00
+                KiedyZwrocil = DateTime.Today, //new DateTime(2018, 6, 15, 13, 0, 0),
+                Kara = 33,
             };
 
             Zdarzenie z3 = new Zdarzenie
@@ -63,7 +67,7 @@ namespace Zad1
                 Kto = u2,
                 Co = e1,
                 KiedyWypozyczyl = new DateTime(2018, 7, 9, 13, 10, 0), //01/03/2008 07:00:00
-                
+                KiedyZwrocil = new DateTime(2018, 7, 9, 13, 10, 0), //01/03/2008 07:00:00
                 Kara = 0,
             };
 
