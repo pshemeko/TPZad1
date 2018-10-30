@@ -72,9 +72,9 @@ namespace Zad1
 
 
 
-            ////////////////serializuje
+            //////////////// serializuje do XML ze str http://www.altcontroldelete.pl/artykuly/xml-w-c-serializacja-obiektow-do-xmla/
             ///
-            List<Uzytkownik> oPersonsList = new List<Uzytkownik>();
+            List<Uzytkownik> oPersonsList = new List<Uzytkownik>(); // zamianst tego nasza liste dac
             int nCounter = 0;
             //oPersonsList.Add(new Uzytkownik(++nCounter, "Jan", "Kowalski", 23));
             //oPersonsList.Add(new Uzytkownik(++nCounter, "Agnieszka", "Nowak", 22));
@@ -102,7 +102,7 @@ namespace Zad1
                 }
             }
 
-
+            ////////// do tad
 
 
 
