@@ -2,3 +2,11 @@ czy te testy sa ok ze funkcj Add testujemy przez get- czy jest inny sposob  i in
 
 
 czy tak mozna zrobic wczytywnie z xml?
+
+jak zrobic sprawdzenie wydajnosci czy trzeba zrobic losowe wypelnianie danych czy jakim sposobem to zrobic
+
+
+o co chodzi z tym ObserverCollection - jak z tego mamy korzystac czy ma to wypisywac dane przy dodaniu??? czy co?
+
+do zrobienia:
+trzeba podac te same dane w wypelnianiStalymi oraz wypelnianieXMLLinq
