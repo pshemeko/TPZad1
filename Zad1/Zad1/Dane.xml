@@ -1,5 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ksiazki>
+<elementy>
+  <osoba>
+    <imie>Janina</imie>
+    <nazwisko>Kowalska</nazwisko>
+    <pesel>9999999</pesel>
+    <adres>Kwiatiwa 23</adres>
+  </osoba>
+  <osoba>
+    <imie>Helga</imie>
+    <nazwisko>Bruner</nazwisko>
+    <pesel>11111111</pesel>
+    <adres>Lipowa 17</adres>
+  </osoba>
+  <osoba>
+    <imie>Adam</imie>
+    <nazwisko>Jakis</nazwisko>
+    <pesel>2222</pesel>
+    <adres>Niciarniana 22</adres>
+  </osoba>
+  <osoba>
+    <imie>Zofia</imie>
+    <nazwisko>Grzyb</nazwisko>
+    <pesel>878788</pesel>
+    <adres>Wschodnia 11</adres>
+  </osoba>
+  <osoba>
+    <imie>Antoni</imie>
+    <nazwisko>Szpak</nazwisko>
+    <pesel>11111991</pesel>
+    <adres>Nowa 17</adres>
+  </osoba>
+  <osoba>
+    <imie>Zbigniew</imie>
+    <nazwisko>Rybak</nazwisko>
+    <pesel>220989</pesel>
+    <adres>Piotrkowska 20</adres>
+  </osoba>
+  <osoba>
+    <imie>Zenek</imie>
+    <nazwisko>martyniuk</nazwisko>
+    <pesel>27875676</pesel>
+    <adres>Lniana 222</adres>
+  </osoba>
+  <osoba>
+    <imie>Ela</imie>
+    <nazwisko>Tracz</nazwisko>
+    <pesel>9878778</pesel>
+    <adres>Brukowa 22</adres>
+  </osoba>
+  <osoba>
+    <imie>Agata</imie>
+    <nazwisko>Nowak</nazwisko>
+    <pesel>7645665</pesel>
+    <adres>Piwna 43</adres>
+  </osoba>
+  <osoba>
+    <imie>Fiona</imie>
+    <nazwisko>Mamona</nazwisko>
+    <pesel>87686</pesel>
+    <adres>Narutowicza 33</adres>
+  </osoba>
+  <osoba>
+    <imie>Zyta</imie>
+    <nazwisko>Pyta</nazwisko>
+    <pesel>986566</pesel>
+    <adres>Owicowa 21</adres>
+  </osoba>
+  <osoba>
+    <imie>Ola</imie>
+    <nazwisko>Chora</nazwisko>
+    <pesel>985655</pesel>
+    <adres>Struga 12</adres>
+  </osoba>
+
   <ksiazka>
     <id>11</id>
     <tytul>Pan Tadeusz</tytul>
@@ -90,4 +163,4 @@
     <nazwiskoAutora>Hugo</nazwiskoAutora>
     <isbn>123-567-345-111</isbn>
   </ksiazka>
-</ksiazki>
+</elementy>

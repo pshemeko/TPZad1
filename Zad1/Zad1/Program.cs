@@ -105,22 +105,15 @@ namespace Zad1
 
             ////////// do tad
 
-
-
-
-
-
-
-
-
-
-
-
-
+            
 
             Console.WriteLine("DUPA :-)");
 
             Console.WriteLine(data_serwis.WyswietlEgzemlarze());
+
+            Console.WriteLine("\n i jeszcze osoby:");
+            Console.WriteLine(data_serwis.WyswietlWszystkichUzyt());
+
             Console.ReadKey();
 
         }

@@ -17,19 +17,18 @@ namespace Zad1
         {
 
             //dodajemy osoby
-            XDocument xml = XDocument.Load("..//..//DaneLudzi.xml");
-            //XDocument xml = XDocument.Load("XMLfiles/Dane.xml");
+            XDocument xml = XDocument.Load("..//..//Dane.xml");
 
             List<Uzytkownik> listaU = (
-            from osoba in xml.Root.Elements("osoba")
-            select new Uzytkownik
-        (
-        osoba.Element("imie").Value,
-        osoba.Element("nazwisko").Value,
-        int.Parse(osoba.Element("pesel").Value),
-        osoba.Element("adres").Value
-        )
-    ).ToList<Uzytkownik>();
+                from osoba in xml.Root.Elements("osoba")
+                select new Uzytkownik
+                    (
+                    osoba.Element("imie").Value,
+                    osoba.Element("nazwisko").Value,
+                    int.Parse(osoba.Element("pesel").Value),
+                    osoba.Element("adres").Value
+                    )
+            ).ToList<Uzytkownik>();
 
 
             for (int i = 0; i < listaU.Count; i++)
@@ -37,18 +36,13 @@ namespace Zad1
                 contex.listaUzytkownikow.Add(listaU.ElementAt(i));
             }
 
-            //  foreach (var item in listaUzytkownikow)
-            //  {
-            //      Console.WriteLine(item.Imie + " "+ item.Nazwisko + " " + item.Pesel + " "+ item.Adres);
-            //  }
-
             ////////////////////////////////////////////////////////////////////////////
             //dodajemy ksiazki
 
-            XDocument xmlKsiazki = XDocument.Load("..//..//DaneKsiazek.xml");
+            //XDocument xmlKsiazki = XDocument.Load("..//..//DaneKsiazek.xml");
 
             List<Egzemplarz> lista = (
-            from ksiazka in xmlKsiazki.Root.Elements("ksiazka")
+            from ksiazka in xml.Root.Elements("ksiazka")
             select new Ksiazka
         (
         int.Parse(ksiazka.Element("id").Value),
