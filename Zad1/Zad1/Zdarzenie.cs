@@ -50,6 +50,15 @@ namespace Zad1
             return s + "\n";
         }
 
+        public string WypiszWszystko()
+        {
+            //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
+            string s = Kto.ToString() + " Pozyczyl: " + Co.ToString() + " Data wypożyczenia " + kiedyWypozyczyl.ToString();
+            if (!kiedyWypozyczyl.Equals(kiedyZwrocil)) s += " Data zwrotu " + kiedyZwrocil;
+            if (kara > 0) s += " kara: " + kara + "zł.";
+            return s + "\n";
+        }
+
         public override bool Equals(object obj)
         {
             if (obj is Zdarzenie)

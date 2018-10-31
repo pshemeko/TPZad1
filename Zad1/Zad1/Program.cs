@@ -81,15 +81,25 @@ namespace Zad1
             //oPersonsList.Add(new Uzytkownik(++nCounter, "Agnieszka", "Nowak", 22));
             //oPersonsList.Add(uzy1);
 
+
+            List<DateTime> lisaaa = new List<DateTime>();
+            DateTime t1 = DateTime.Now;
+            DateTime t2 = DateTime.Today;
+
+            lisaaa.Add(t1);
+            lisaaa.Add(t2);
+
+
             XmlRootAttribute oRootAttr = new XmlRootAttribute();
             oRootAttr.ElementName = "Uzytownik";
             oRootAttr.IsNullable = true;
-            XmlSerializer oSerializer = new XmlSerializer(typeof(List<Uzytkownik>), oRootAttr);
+            XmlSerializer oSerializer = new XmlSerializer(typeof(List<DateTime>), oRootAttr);
             StreamWriter oStreamWriter = null;
             try
             {
                 oStreamWriter = new StreamWriter("dupaaaa.xml");    // w tym pliku zapisuje wszystkich uzytkownikow
-                oSerializer.Serialize(oStreamWriter, data_serwis.ZwrocWszystkichUzytkownikow());   // oPersonsList);
+                //oSerializer.Serialize(oStreamWriter, data_serwis.ZwrocWszystkichUzytkownikow());   // oPersonsList);
+                oSerializer.Serialize(oStreamWriter, lisaaa);
             }
             catch (Exception oException)
             {
@@ -113,6 +123,9 @@ namespace Zad1
 
             Console.WriteLine("\n i jeszcze osoby:");
             Console.WriteLine(data_serwis.WyswietlWszystkichUzyt());
+
+            Console.WriteLine("\n teraz zdarzenia");
+            Console.WriteLine(data_serwis.WyswietlWszystkieZdarzeniaZUzytkownikami());
 
             Console.ReadKey();
 

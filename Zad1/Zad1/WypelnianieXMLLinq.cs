@@ -11,7 +11,26 @@ namespace Zad1
     class WypelnianieXMLLinq : Wypelnianie
     {
 
+        public class PotrzebnaDoSynchronizacjiZdarzen
+        {
+            public int Osoba { get; set; }
+            public int Ksiazka { get; set; }
+            //public string Wypoz { get; set; }
+            //public string Zwrot { get; set; }
+            public DateTime Wypoz { get; set; }
+            public DateTime Zwrot { get; set; }
+            public int Kar { get; set; }
 
+            //public Blabla(int os, int ks, string dw, string dz, int ka)
+                public PotrzebnaDoSynchronizacjiZdarzen(int os, int ks, DateTime dw, DateTime dz, int ka)
+            {
+                this.Osoba = os;
+                this.Ksiazka = ks;
+                this.Wypoz = dw;
+                this.Zwrot = dz;
+                this.Kar = ka;
+            }
+        }
 
         override public void Wypelnij(ref DataContext contex)
         {
@@ -44,16 +63,16 @@ namespace Zad1
             List<Egzemplarz> lista = (
             from ksiazka in xml.Root.Elements("ksiazka")
             select new Ksiazka
-        (
-        int.Parse(ksiazka.Element("id").Value),
-        ksiazka.Element("tytul").Value,
-        // ksiazka.
-        int.Parse(ksiazka.Element("iloscStron").Value),
-        ksiazka.Element("imieAutora").Value,
-        ksiazka.Element("nazwiskoAutora").Value,
-        ksiazka.Element("isbn").Value
-        )
-    ).ToList<Egzemplarz>();
+                (
+                int.Parse(ksiazka.Element("id").Value),
+                ksiazka.Element("tytul").Value,
+                // ksiazka.
+                int.Parse(ksiazka.Element("iloscStron").Value),
+                ksiazka.Element("imieAutora").Value,
+                ksiazka.Element("nazwiskoAutora").Value,
+                ksiazka.Element("isbn").Value
+                )
+            ).ToList<Egzemplarz>();
 
             //contex.egzemplarze.Add(e1.Id, e1);
             //contex.egzemplarze.Add(lista.ElementAt(1).Id, lista.ElementAt(1));
@@ -69,24 +88,46 @@ namespace Zad1
             ////////////////////////////////////////////////////////////////////////////
             //dodajemy wypozyczenia
 
-            var zd = new Zdarzenie[10];
 
+            List<PotrzebnaDoSynchronizacjiZdarzen> listaZ = (
+            from zdarz in xml.Root.Elements("zdarzenie")
+            select new PotrzebnaDoSynchronizacjiZdarzen
+                (
+                int.Parse(zdarz.Element("kto").Value),
+                int.Parse(zdarz.Element("co").Value),
+                DateTime.Parse(zdarz.Element("kiedyWypozyczyl").Value),
+                DateTime.Parse(zdarz.Element("kiedyZwrocil").Value),
+                int.Parse(zdarz.Element("kara").Value)
+                )
+            ).ToList<PotrzebnaDoSynchronizacjiZdarzen>();
 
-
-            for (int i = 0; i < 10; i++)
+            
+            for (int i = 0; i < listaZ.Count; i++)
             {
-
-                zd[i] = new Zdarzenie
-
+                // tworze predykaty
+                Predicate<Egzemplarz> predykatK = CzyEgzemplarzK;
+                bool CzyEgzemplarzK(Egzemplarz opis)
                 {
-                    Kto = listaU.ElementAt(i),
-                    Co = lista.ElementAt(i),
-                    KiedyWypozyczyl = new DateTime(2018, 7, 9, 13, 10, 0), // tu randoma mozna dac
-                    Kara = 0,
-                };
+                    return opis.Id.Equals(listaZ.ElementAt(i).Ksiazka);
+                }
+                
+                Predicate<Uzytkownik> predykatU = CzyEgzemplarzU;
+                bool CzyEgzemplarzU(Uzytkownik opis)
+                {
+                    return opis.Pesel.Equals(listaZ.ElementAt(i).Osoba);
+                }
+                // tworze zdarzenie z predykatow
+                Zdarzenie zd = new Zdarzenie();
+                zd.Co = lista.Find(predykatK);//  listaZ.ElementAt(i)
+                zd.Kto = listaU.Find(predykatU);
+                zd.KiedyWypozyczyl = Convert.ToDateTime(listaZ.ElementAt(i).Wypoz);
+                zd.KiedyZwrocil = Convert.ToDateTime(listaZ.ElementAt(i).Zwrot); 
+                zd.Kara = listaZ.ElementAt(i).Kar;
 
-                contex.zdarzenia.Add(zd[i]);
+                //dodaje do repozytorium
+                contex.zdarzenia.Add(zd);
             }
+
 
         }
     }

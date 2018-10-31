@@ -221,7 +221,7 @@ namespace Zad1
             string s = "";
             foreach (var item in dataContext.listaUzytkownikow)
             {
-               s+= item.ToString();
+               s+= item.ToString() + "\n";
             }
             //return dataContext.listaUzytkownikow.ToString();
             return s;

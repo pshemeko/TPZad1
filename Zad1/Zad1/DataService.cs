@@ -79,7 +79,16 @@ namespace Zad1
             {
                 s += item.ToString() + "\n";
             }
+            return s;
+        }
 
+        public string WyswietlWszystkieZdarzeniaZUzytkownikami()
+        {
+            string s = "";
+            foreach (var item in repozytorium.GetAllZdarzenia())
+            {
+                s += item.WypiszWszystko() + "\n";
+            }
             return s;
         }
 
@@ -226,6 +235,19 @@ namespace Zad1
         public void ZmienZdarzenie(Zdarzenie stare, Zdarzenie nowe)
         {
             repozytorium.UpdateZdarzenie(stare, nowe);
+        }
+
+
+
+
+        public List<Zdarzenie> ZwrocWszystkieZdarzenia()
+        {
+            List<Zdarzenie> lis = new List<Zdarzenie>();
+            foreach (var item in repozytorium.GetAllZdarzenia())
+            {
+                lis.Add(item);
+            }
+            return lis;// repozytorium.GetAllZdarzenia();
         }
 
 

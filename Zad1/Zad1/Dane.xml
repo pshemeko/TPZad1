@@ -163,4 +163,33 @@
     <nazwiskoAutora>Hugo</nazwiskoAutora>
     <isbn>123-567-345-111</isbn>
   </ksiazka>
+  
+  <zdarzenie>
+	<kto>9999999</kto>
+	<co>11</co>
+	<kiedyWypozyczyl>2012-11-28T18:49:10.5660846Z</kiedyWypozyczyl>
+	<kiedyZwrocil>2018-10-31T00:00:00+01:00</kiedyZwrocil>
+	<kara>10</kara>
+  </zdarzenie>
+  <zdarzenie>
+	<kto>2222</kto>
+	<co>12</co>
+	<kiedyWypozyczyl>2018-10-31T22:51:43.7413692+01:00</kiedyWypozyczyl>
+	<kiedyZwrocil>2018-10-31T22:51:43.7413692+01:00</kiedyZwrocil>
+	<kara>20</kara>
+  </zdarzenie>
+  <zdarzenie>
+  	<kto>878788</kto>
+	<co>20</co>
+	<kiedyWypozyczyl>2018-10-01T08:51:43.7413692+01:00</kiedyWypozyczyl>
+	<kiedyZwrocil>2018-10-13T09:12:25.7413692+01:00</kiedyZwrocil>
+	<kara>33</kara>
+  </zdarzenie>
+  <zdarzenie>
+	<kto>9999999</kto>
+	<co>12</co>
+	<kiedyWypozyczyl>2018-10-31T00:00:00+01:00</kiedyWypozyczyl>
+	<kiedyZwrocil>2018-10-31T00:00:00+01:00</kiedyZwrocil>
+	<kara>0</kara>
+  </zdarzenie>
 </elementy>
