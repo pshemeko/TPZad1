@@ -92,6 +92,17 @@ namespace Zad1
             return s;
         }
 
+
+        public string WyswietlWszystkieOpisyStanowEgzemplarzy()
+        {
+            string s = "";
+            foreach (var item in repozytorium.GetAllOpisStanuEgzemplarza())
+            {
+                s += item.ToString() + "\n";
+            }
+            return s;
+        }
+
         // ********************** Uzytkownicy **********************
 
         //TODO do sprawdzenia i przemyslenia co z elementami zaleznymi od obiektow kasowanych bo chyba sie posypie baza jak wyswietlisz zdarzenia pousunieciu uzytkownika

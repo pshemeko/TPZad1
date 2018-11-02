@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
-
-using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -127,6 +122,8 @@ namespace Zad1
             Console.WriteLine("\n teraz zdarzenia");
             Console.WriteLine(data_serwis.WyswietlWszystkieZdarzeniaZUzytkownikami());
 
+            Console.WriteLine("\n teraz zdarzenia:");
+            Console.WriteLine(data_serwis.WyswietlWszystkieOpisyStanowEgzemplarzy());
             Console.ReadKey();
 
         }
