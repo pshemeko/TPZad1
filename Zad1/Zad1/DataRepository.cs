@@ -213,7 +213,27 @@ namespace Zad1
         {
             return dataContext.opisStanow.Remove(ose);
         }
+        //// ******************** rozmiar
 
+        public int SizeOfUzytkownicy()
+        {
+            return dataContext.listaUzytkownikow.Count;
+        }
+
+        public int SizeOfEgzemplarze()
+        {
+            return dataContext.egzemplarze.Count;
+        }
+        public int SizeOfZdarzenia()
+        {
+            return dataContext.zdarzenia.Count;
+        }
+
+        public int SizeOfOpisStanow()
+        {
+            return dataContext.opisStanow.Count;
+        }
+        
         //// ******************** wyswietlanie
 
         public string pokaz_wszystkich_uzytkownikow()
