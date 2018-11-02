@@ -32,6 +32,25 @@ namespace Zad1
             }
         }
 
+        public class PotrzebnaDoSynchronizacjiOpisuEgzemplarza
+        {
+            public int KtoryEgzemplarz { get; set; }
+            public DateTime DataZakupu { get; set; }
+            public Boolean Dostepna { get; set; }
+            public string OpisStanu { get; set; }
+            public int LicznikWypozyczen { get; set; }
+
+            //public Blabla(int os, int ks, string dw, string dz, int ka)
+            public PotrzebnaDoSynchronizacjiOpisuEgzemplarza(int egzemplarz, DateTime dataZakupy, Boolean dostepna, string opisStanu, int licznikWypozyczen)
+            {
+                this.KtoryEgzemplarz = egzemplarz;
+                this.DataZakupu = dataZakupy;
+                this.Dostepna = dostepna;
+                this.OpisStanu = opisStanu;
+                this.LicznikWypozyczen = licznikWypozyczen;
+            }
+        }
+
         override public void Wypelnij(ref DataContext contex)
         {
 
@@ -128,6 +147,50 @@ namespace Zad1
                 contex.zdarzenia.Add(zd);
             }
 
+
+            ////////////////////////////////////////////////////////////////////////////
+            //dodajemy opisy Egzemplarza
+
+
+            List<PotrzebnaDoSynchronizacjiOpisuEgzemplarza> listaO = (
+            from opis in xml.Root.Elements("opisstanuegzemplarza")
+            select new PotrzebnaDoSynchronizacjiOpisuEgzemplarza
+                (
+                int.Parse(opis.Element("egzemplarz").Value),
+                DateTime.Parse(opis.Element("datazakupu").Value),
+                Boolean.Parse(opis.Element("dostepna").Value),
+                opis.Element("opisstanu").Value,
+                int.Parse(opis.Element("licznikwypozyczen").Value)
+                )
+            ).ToList<PotrzebnaDoSynchronizacjiOpisuEgzemplarza>();
+
+
+            for (int i = 0; i < listaO.Count; i++)
+            {
+                // tworze predykaty
+                Predicate<Egzemplarz> predykatK = CzyEgzemplarzK;
+                bool CzyEgzemplarzK(Egzemplarz opis)
+                {
+                    return opis.Id.Equals(listaZ.ElementAt(i).Ksiazka);
+                }
+
+                Predicate<Uzytkownik> predykatU = CzyEgzemplarzU;
+                bool CzyEgzemplarzU(Uzytkownik opis)
+                {
+                    return opis.Pesel.Equals(listaZ.ElementAt(i).Osoba);
+                }
+                // tworze zdarzenie z predykatow
+                OpisStanuEgzemplarza op = new OpisStanuEgzemplarza();
+                op.KtoryEgzemplarz = lista.Find(predykatK);//  listaZ.ElementAt(i)
+                //----op.Kto = listaU.Find(predykatU);
+                op.DataZakupu = Convert.ToDateTime(listaO.ElementAt(i).DataZakupu);
+                op.Dostepna = listaO.ElementAt(i).Dostepna;
+                op.OpisStanu = listaO.ElementAt(i).OpisStanu;
+                op.LicznikWypozyczen = listaO.ElementAt(i).LicznikWypozyczen;
+
+                //dodaje do repozytorium
+                contex.opisStanow.Add(op);
+            }
 
         }
     }
