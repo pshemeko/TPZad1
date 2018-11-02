@@ -192,16 +192,18 @@
 	<kiedyZwrocil>2018-10-31T00:00:00+01:00</kiedyZwrocil>
 	<kara>0</kara>
   </zdarzenie>
+  
+  
   <opisstanuegzemplarza>
 	  <egzemplarz>11</egzemplarz>
-	  <datazakupu>2017-10-31T00:00:00+01:00</datazakupu>
+	  <datazakupu>2018-10-01T08:51:43.7413692+01:00</datazakupu>
 	  <dostepna>true</dostepna>
 	  <opisstanu>stan idealny</opisstanu>
 	  <licznikwypozyczen>0</licznikwypozyczen>
   </opisstanuegzemplarza>
     <opisstanuegzemplarza>
 	  <egzemplarz>12</egzemplarz>
-	  <datazakupu>2017-11-31T00:00:00+01:00</datazakupu>
+	  <datazakupu>2018-10-31T00:00:00+01:00</datazakupu>
 	  <dostepna>true</dostepna>
 	  <opisstanu>Pognieciona okladka</opisstanu>
 	  <licznikwypozyczen>1</licznikwypozyczen>
