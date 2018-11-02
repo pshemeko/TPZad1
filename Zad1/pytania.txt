@@ -9,8 +9,11 @@ jak zrobic sprawdzenie wydajnosci czy trzeba zrobic losowe wypelnianie danych cz
 o co chodzi z tym ObserverCollection - jak z tego mamy korzystac czy ma to wypisywac dane przy dodaniu??? czy co?
 
 ewentualnie jak zaimpelemntowaæ enuma poprzez XML
+(moja odpowiedz przez string i parowanie)
+
 
 do zrobienia:
 trzeba podac te same dane w wypelnianiStalymi oraz wypelnianieXMLLinq
 
-
+wypelnianie xml wpisywanie opisow nie dziala, 
+testy delete 2 ostatnie dzialaja zle
