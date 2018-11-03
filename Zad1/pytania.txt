@@ -1,3 +1,4 @@
+
 czy te testy sa ok ze funkcj Add testujemy przez get- czy jest inny sposob  i inaczej to trzeba robic bo klasa me element prywatny contex
 
 
@@ -16,6 +17,11 @@ czy musimy robic hash code w klasach??
 do zrobienia:
 trzeba podac te same dane w wypelnianiStalymi oraz wypelnianieXMLLinq
 
-wypelnianie xml wpisywanie opisow nie dziala, 
-testy delete 2 ostatnie dzialaja zle
+jak dziala polimorfizm i kirdy uruchomic w c# czemu wyswietla to string z egzemplarz a nie z ksiazka (mozwa o program.cs)
+chyba jest juz ok
 
+
+musimy wpisac wypelnianie stalymi tak by bylo z sensem i wiecej oraz w xml wpisac kilkaopisow egzemplarza i darzenia
+
+dodam jeszcze wyswietlanie powiazanyc danych 
+trzeba tez zrobic by jakos z sensem wyswietlalo informacje

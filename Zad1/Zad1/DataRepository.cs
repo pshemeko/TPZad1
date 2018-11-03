@@ -171,7 +171,7 @@ namespace Zad1
             stary.Id = nowy.Id;
             //stary.LicznikWypozyczen = nowy.LicznikWypozyczen;
             stary.Tytul = nowy.Tytul;
-            stary.RodzajEgz = nowy.RodzajEgz;
+            //stary.RodzajEgz = nowy.RodzajEgz;
         }
 
         public void UpdateZdarzenie(Zdarzenie stary, Zdarzenie nowy)

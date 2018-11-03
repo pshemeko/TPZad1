@@ -15,7 +15,7 @@ namespace Zad1
         public string KtoCzyta { get; set; }
 
         public Audiobook(int id, string tytul, Rodzaj rodzajEgz, int iloscMinut, string ktoCzyta)
-    : base(id, tytul, rodzajEgz)
+    : base(id, tytul) //, rodzajEgz)
         {
             this.ilossMinut = iloscMinut;
             this.ktoCzyta = ktoCzyta;

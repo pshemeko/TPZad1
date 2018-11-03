@@ -85,28 +85,28 @@ namespace Zad1
             lisaaa.Add(t2);
 
 
-            XmlRootAttribute oRootAttr = new XmlRootAttribute();
-            oRootAttr.ElementName = "Uzytownik";
-            oRootAttr.IsNullable = true;
-            XmlSerializer oSerializer = new XmlSerializer(typeof(List<DateTime>), oRootAttr);
-            StreamWriter oStreamWriter = null;
-            try
-            {
-                oStreamWriter = new StreamWriter("dupaaaa.xml");    // w tym pliku zapisuje wszystkich uzytkownikow
-                //oSerializer.Serialize(oStreamWriter, data_serwis.ZwrocWszystkichUzytkownikow());   // oPersonsList);
-                oSerializer.Serialize(oStreamWriter, lisaaa);
-            }
-            catch (Exception oException)
-            {
-                Console.WriteLine("Aplikacja wygenerowała następujący wyjątek: " + oException.Message);
-            }
-            finally
-            {
-                if (null != oStreamWriter)
-                {
-                    oStreamWriter.Dispose();
-                }
-            }
+            //XmlRootAttribute oRootAttr = new XmlRootAttribute();
+            //oRootAttr.ElementName = "Uzytownik";
+            //oRootAttr.IsNullable = true;
+            //XmlSerializer oSerializer = new XmlSerializer(typeof(List<DateTime>), oRootAttr);
+            //StreamWriter oStreamWriter = null;
+            //try
+            //{
+            //    oStreamWriter = new StreamWriter("dupaaaa.xml");    // w tym pliku zapisuje wszystkich uzytkownikow
+            //    //oSerializer.Serialize(oStreamWriter, data_serwis.ZwrocWszystkichUzytkownikow());   // oPersonsList);
+            //    oSerializer.Serialize(oStreamWriter, lisaaa);
+            //}
+            //catch (Exception oException)
+            //{
+            //    Console.WriteLine("Aplikacja wygenerowała następujący wyjątek: " + oException.Message);
+            //}
+            //finally
+            //{
+            //    if (null != oStreamWriter)
+            //    {
+            //        oStreamWriter.Dispose();
+            //    }
+            //}
 
             ////////// do tad
 

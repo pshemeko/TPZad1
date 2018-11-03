@@ -10,7 +10,8 @@ namespace Zad1
 {
     class WypelnianieXMLLinq : Wypelnianie
     {
-
+        ///////   Klasy potrzebne do wczytywania z XML
+        
         public class PotrzebnaDoSynchronizacjiZdarzen
         {
             public int Osoba { get; set; }
@@ -21,8 +22,7 @@ namespace Zad1
             public DateTime Zwrot { get; set; }
             public int Kar { get; set; }
 
-            //public Blabla(int os, int ks, string dw, string dz, int ka)
-                public PotrzebnaDoSynchronizacjiZdarzen(int os, int ks, DateTime dw, DateTime dz, int ka)
+            public PotrzebnaDoSynchronizacjiZdarzen(int os, int ks, DateTime dw, DateTime dz, int ka)
             {
                 this.Osoba = os;
                 this.Ksiazka = ks;
@@ -39,8 +39,7 @@ namespace Zad1
             public Boolean Dostepna { get; set; }
             public string OpisStanu { get; set; }
             public int LicznikWypozyczen { get; set; }
-
-            //public Blabla(int os, int ks, string dw, string dz, int ka)
+            
             public PotrzebnaDoSynchronizacjiOpisuEgzemplarza(int egzemplarz, DateTime dataZakupy, Boolean dostepna, string opisStanu, int licznikWypozyczen)
             {
                 this.KtoryEgzemplarz = egzemplarz;
@@ -51,10 +50,37 @@ namespace Zad1
             }
         }
 
+        public class KsiazkaZEnumem
+        {
+            public int Id { get; set; } //klucz
+            public string Tytul { get; set; }
+
+            public int IloscStron { get; set; }
+            public string ImieAutora { get; set; }
+            public string NazwiskoAutora { get; set; }
+            public string Isbn { get; set; }
+            public string RodzajEgz { get; set; }
+
+            public KsiazkaZEnumem(int id, string tytul, string rodzajEgz,  int iloscStron, string imieAutora, string nazwiskoAutora, string isbn)
+            {
+                this.Id = id;
+                this.Tytul = tytul;
+                this.IloscStron = iloscStron;
+                this.ImieAutora = imieAutora;
+                this.NazwiskoAutora = nazwiskoAutora;
+                this.Isbn = isbn;
+                this.RodzajEgz = rodzajEgz;
+            }
+
+        }
+
+
+        //********************* Główna metoda
+
         override public void Wypelnij(ref DataContext contex)
         {
 
-            //dodajemy osoby
+            //**************************** Dodajemy osoby
             XDocument xml = XDocument.Load("..//..//Dane.xml");
 
             List<Uzytkownik> listaU = (
@@ -75,23 +101,40 @@ namespace Zad1
             }
 
             ////////////////////////////////////////////////////////////////////////////
-            //dodajemy ksiazki
+            
+            //**************************** Dodajemy ksiazki
 
-            //XDocument xmlKsiazki = XDocument.Load("..//..//DaneKsiazek.xml");
 
-            List<Egzemplarz> lista = (
+
+        List<KsiazkaZEnumem> lista1 = (
             from ksiazka in xml.Root.Elements("ksiazka")
-            select new Ksiazka
+            select new KsiazkaZEnumem
                 (
                 int.Parse(ksiazka.Element("id").Value),
                 ksiazka.Element("tytul").Value,
-                // ksiazka.
+
+                ksiazka.Element("rodzaj").Value,
+                //Enum.Parse(typeof(Rodzaj), ksiazka.Element("rodzaj").Value),
+                //Rodzaj.ksiazka.Element("rodzaj").Value),
                 int.Parse(ksiazka.Element("iloscStron").Value),
                 ksiazka.Element("imieAutora").Value,
                 ksiazka.Element("nazwiskoAutora").Value,
                 ksiazka.Element("isbn").Value
                 )
-            ).ToList<Egzemplarz>();
+            ).ToList<KsiazkaZEnumem>();
+
+           
+
+            List<Ksiazka> lista = new List<Ksiazka>();
+
+            foreach (var item in lista1)
+            {
+                
+                Rodzaj rodz = (Rodzaj)(Rodzaj)Enum.Parse(typeof(Rodzaj), item.RodzajEgz);
+
+                Ksiazka ks = new Ksiazka(item.Id, item.Tytul, rodz, item.IloscStron, item.ImieAutora, item.NazwiskoAutora, item.Isbn);
+                lista.Add(ks);
+            }
 
             //contex.egzemplarze.Add(e1.Id, e1);
             //contex.egzemplarze.Add(lista.ElementAt(1).Id, lista.ElementAt(1));
@@ -105,7 +148,7 @@ namespace Zad1
             }
 
             ////////////////////////////////////////////////////////////////////////////
-            //dodajemy wypozyczenia
+            //**************************** Dodajemy wypozyczenia
 
 
             List<PotrzebnaDoSynchronizacjiZdarzen> listaZ = (
@@ -149,7 +192,7 @@ namespace Zad1
 
 
             ////////////////////////////////////////////////////////////////////////////
-            //dodajemy opisy Egzemplarza
+            //**************************** Dodajemy opisy Egzemplarza
 
 
             List<PotrzebnaDoSynchronizacjiOpisuEgzemplarza> listaO = (
@@ -175,12 +218,7 @@ namespace Zad1
                     
                 }
 
-                //Predicate<Uzytkownik> predykatU = CzyEgzemplarzU;
-                //bool CzyEgzemplarzU(Uzytkownik opis)
-                //{
-                //    return opis.Pesel.Equals(listaZ.ElementAt(i).Osoba);
-                //}
-
+                
                 // tworze zdarzenie z predykatow
                 OpisStanuEgzemplarza op = new OpisStanuEgzemplarza();
                 op.KtoryEgzemplarz = lista.Find(predykatK);//  listaZ.ElementAt(i)

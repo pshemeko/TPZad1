@@ -15,8 +15,8 @@ namespace Zad1
         public string Isbn { get; set; }
 
 
-        public Czasopismo(int id, string tytul, Rodzaj rodzajEgz,  string wydanie,  string isbn)
-            : base(id, tytul, rodzajEgz)
+        public Czasopismo(int id, string tytul, string wydanie,  string isbn)
+            : base(id, tytul)//, rodzajEgz)
         {
             this.wydanie = wydanie;
             this.isbn = isbn;
