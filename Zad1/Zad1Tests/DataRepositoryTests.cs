@@ -17,13 +17,6 @@ namespace Zad1.Tests
             DataContext dataConstexx = new DataContext();
         
 
-    /*
-    [TestMethod()]
-    public void WypelnijTest()
-    {
-        Assert.Fail();
-    }
-    */
     [TestMethod()]
 
         // ****************************************  ADD *******************************************
@@ -103,12 +96,7 @@ namespace Zad1.Tests
             Assert.AreEqual(repozytorium.SizeOfZdarzenia(), 1);
         }
 
-        //[TestMethod()]
-        //public void AddZdarzenieZwrotTest()
-        //{
-        //    Assert.Fail();
-        //}
-
+      
         [TestMethod()]
         public void AddOpisStanuEgzemplarzaTest()
         {
@@ -238,10 +226,7 @@ namespace Zad1.Tests
             {
                 repozytorium.DataContex = dataConstexx;
             };
-
-            //DataService data_serwis = new DataService(repozytorium);
-            ///
-
+            
             Uzytkownik uz = new Uzytkownik()
             {
                 Adres = "Abramowskiego 1/7",
@@ -257,10 +242,6 @@ namespace Zad1.Tests
                 Pesel = 2345,
             };
 
-            //Assert.Equals(repozytorium.SizeOfUzytkownicy(), 0);
-            //repozytorium.AddUzytkownika(uz);
-            //Assert.AreEqual(repozytorium.GetUzytkownika(1234), uz);
-            //Assert.Equals(repozytorium.SizeOfUzytkownicy(), 1);
             repozytorium.AddUzytkownika(uz);
             repozytorium.AddUzytkownika(uzB);
 
@@ -605,9 +586,6 @@ namespace Zad1.Tests
             Assert.AreEqual(1, repozytorium.SizeOfEgzemplarze());
 
         }
-
-
-
-
+            
     }
 }

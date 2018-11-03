@@ -122,7 +122,7 @@ namespace Zad1
             Console.WriteLine("\n teraz zdarzenia");
             Console.WriteLine(data_serwis.WyswietlWszystkieZdarzeniaZUzytkownikami());
 
-            Console.WriteLine("\n teraz zdarzenia:");
+            Console.WriteLine("\n teraz opisy stanow:");
             Console.WriteLine(data_serwis.WyswietlWszystkieOpisyStanowEgzemplarzy());
             Console.ReadKey();
 

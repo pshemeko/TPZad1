@@ -204,12 +204,6 @@ namespace Zad1
             return dataContext.egzemplarze.Remove(klucz);
         }
 
-        public Boolean DeleteZdarzenie(Zdarzenie zd)
-        {
-            return dataContext.zdarzenia.Remove(zd);
-        }
-
-
         //// ******************** rozmiar
 
         public int SizeOfUzytkownicy()

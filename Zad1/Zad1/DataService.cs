@@ -21,20 +21,6 @@ namespace Zad1
 
         // ********************** Wyswietlanie **********************
         
-
-        // TODO ktora z tych metod powinnabyc zaimplementowana
-  
-        //
-        //public string WyswietlUzytkownikow(IEnumerable<Uzytkownik> obj)
-        //{
-        //    string st = "";
-        //    foreach(Uzytkownik uz in obj)
-        //    {
-        //        st += uz + "\n";
-        //    }
-        //    return st;
-        //}
-
         public string WyswietlEgzemlarze()
         {
             string s = "";
@@ -164,9 +150,6 @@ namespace Zad1
             if (repozytorium.GetAllUzytkownikow().Contains(uz))
             {
 
-                //List<OpisStanuEgzemplarza> stany = this.repozytorium.GetAllOpisStanuEgzemplarza();
-                //Boolean czyDostepna = false;
-
                 Predicate<OpisStanuEgzemplarza> predykat = CzyEgzemplarz;
 
                 bool CzyEgzemplarz(OpisStanuEgzemplarza opis)
@@ -175,18 +158,7 @@ namespace Zad1
                 }
 
                 OpisStanuEgzemplarza znalezionyOpis = repozytorium.GetAllOpisStanuEgzemplarza().Find(predykat);
-
-                //foreach (var item in stany)
-                //{
-                //    if( item.KtoryEgzemplarz == eg)
-                //    {
-                //        czyDostepna = item.Dostepna;
-
-                //    }
-                //}
-
-                //Boolean czyDostepna = znalezionyOpis.Dostepna;
-                // repozytorium.GetAllZdarzenia();
+                            
                 if (znalezionyOpis.Dostepna)
                 {
                     Zdarzenie zd = new Zdarzenie();
@@ -196,14 +168,7 @@ namespace Zad1
                     zd.KiedyZwrocil = zd.KiedyWypozyczyl;
 
                     repozytorium.AddZdarzenie(zd);
-                    // stawiam ze wypozyczona
-                    //foreach (var item in stany)
-                    //{
-                    //    if (item.KtoryEgzemplarz == eg)
-                    //    {
-                    //        item.Dostepna = false;
-                    //    }
-                    //}
+
                     znalezionyOpis.Dostepna = false;
                     czyWypozyczy = true;
                     znalezionyOpis.LicznikWypozyczen = znalezionyOpis.LicznikWypozyczen + 1;    // zwiekrzam licznik wyypozyczen
@@ -213,7 +178,7 @@ namespace Zad1
             }
 
             return czyWypozyczy;
-           // repozytorium.AddZdarzenie(zdarz);
+
         }
 
         public void Zwroc(Uzytkownik uz, Egzemplarz eg) // TODO Sprawdz czy zmienia w ryginalnej bazie czy dziala na kopii
@@ -238,17 +203,11 @@ namespace Zad1
 
         }
 
-        public void UsunZdarzenie(Zdarzenie zdarz)
-        {
-            repozytorium.DeleteZdarzenie(zdarz);
-        }
 
         public void ZmienZdarzenie(Zdarzenie stare, Zdarzenie nowe)
         {
             repozytorium.UpdateZdarzenie(stare, nowe);
         }
-
-
 
 
         public List<Zdarzenie> ZwrocWszystkieZdarzenia()
@@ -258,13 +217,8 @@ namespace Zad1
             {
                 lis.Add(item);
             }
-            return lis;// repozytorium.GetAllZdarzenia();
+            return lis;
         }
-
-
-
-
-        //TODO???????? czesc 4 dalej zrobic edytuj zmień
 
         // TODO zrobic rezerwowanie ksiazki oraz wypozyczanie
 
