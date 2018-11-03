@@ -34,7 +34,7 @@ namespace Zad1
 
         public class PotrzebnaDoSynchronizacjiOpisuEgzemplarza
         {
-            public int KtoryEgzemplarz { get; set; }
+            public int KtoryEgzemplarz { get; set; } // klucz
             public DateTime DataZakupu { get; set; }
             public Boolean Dostepna { get; set; }
             public string OpisStanu { get; set; }
@@ -171,14 +171,16 @@ namespace Zad1
                 Predicate<Egzemplarz> predykatK = CzyEgzemplarzK;
                 bool CzyEgzemplarzK(Egzemplarz opis)
                 {
-                    return opis.Id.Equals(listaZ.ElementAt(i).Ksiazka);
+                    return opis.Id.Equals(listaO.ElementAt(i).KtoryEgzemplarz);
+                    
                 }
 
-                Predicate<Uzytkownik> predykatU = CzyEgzemplarzU;
-                bool CzyEgzemplarzU(Uzytkownik opis)
-                {
-                    return opis.Pesel.Equals(listaZ.ElementAt(i).Osoba);
-                }
+                //Predicate<Uzytkownik> predykatU = CzyEgzemplarzU;
+                //bool CzyEgzemplarzU(Uzytkownik opis)
+                //{
+                //    return opis.Pesel.Equals(listaZ.ElementAt(i).Osoba);
+                //}
+
                 // tworze zdarzenie z predykatow
                 OpisStanuEgzemplarza op = new OpisStanuEgzemplarza();
                 op.KtoryEgzemplarz = lista.Find(predykatK);//  listaZ.ElementAt(i)
