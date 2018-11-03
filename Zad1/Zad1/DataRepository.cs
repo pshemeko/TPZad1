@@ -209,10 +209,7 @@ namespace Zad1
             return dataContext.zdarzenia.Remove(zd);
         }
 
-        public Boolean DeleteOpisStanuEgzemplarza(OpisStanuEgzemplarza ose)
-        {
-            return dataContext.opisStanow.Remove(ose);
-        }
+
         //// ******************** rozmiar
 
         public int SizeOfUzytkownicy()
