@@ -81,7 +81,7 @@ namespace Zad1
         {
 
             //**************************** Dodajemy osoby
-            XDocument xml = XDocument.Load("..//..//Dane.xml");
+            XDocument xml = XDocument.Load(@"..\..\xml\Dane.xml");
 
             List<Uzytkownik> listaU = (
                 from osoba in xml.Root.Elements("osoba")
@@ -106,39 +106,21 @@ namespace Zad1
 
 
 
-        List<KsiazkaZEnumem> lista1 = (
+        List<Ksiazka> lista = (
             from ksiazka in xml.Root.Elements("ksiazka")
-            select new KsiazkaZEnumem
+            select new Ksiazka
                 (
                 int.Parse(ksiazka.Element("id").Value),
                 ksiazka.Element("tytul").Value,
-
-                ksiazka.Element("rodzaj").Value,
-                //Enum.Parse(typeof(Rodzaj), ksiazka.Element("rodzaj").Value),
-                //Rodzaj.ksiazka.Element("rodzaj").Value),
+                ((Rodzaj)(Rodzaj)Enum.Parse(typeof(Rodzaj), ksiazka.Element("rodzaj").Value)),
                 int.Parse(ksiazka.Element("iloscStron").Value),
                 ksiazka.Element("imieAutora").Value,
                 ksiazka.Element("nazwiskoAutora").Value,
                 ksiazka.Element("isbn").Value
                 )
-            ).ToList<KsiazkaZEnumem>();
+            ).ToList<Ksiazka>();
 
            
-
-            List<Ksiazka> lista = new List<Ksiazka>();
-
-            foreach (var item in lista1)
-            {
-                
-                Rodzaj rodz = (Rodzaj)(Rodzaj)Enum.Parse(typeof(Rodzaj), item.RodzajEgz);
-
-                Ksiazka ks = new Ksiazka(item.Id, item.Tytul, rodz, item.IloscStron, item.ImieAutora, item.NazwiskoAutora, item.Isbn);
-                lista.Add(ks);
-            }
-
-            //contex.egzemplarze.Add(e1.Id, e1);
-            //contex.egzemplarze.Add(lista.ElementAt(1).Id, lista.ElementAt(1));
-
 
             for (int i = 0; i < lista.Count; i++)
             {
