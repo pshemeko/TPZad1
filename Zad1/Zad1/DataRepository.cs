@@ -9,9 +9,9 @@ namespace Zad1
     public class DataRepository
     {
         private DataContext dataContext;
-        private Wypelnianie wypelniacz;
+        private IWypelnianie wypelniacz;
 
-        public DataRepository(Wypelnianie wyp)
+        public DataRepository(IWypelnianie wyp)
         {
             this.wypelniacz = wyp;
         }
@@ -29,6 +29,7 @@ namespace Zad1
         ////TODO dodaj inne metody by dodawac elementy jak dodaj/usun/zmien Egzemplarz, Uzytkownika - uwaga rozne klasy bo dziedziczenie
         
         // ******************** Add
+
         public void AddUzytkownika(Uzytkownik uz)
         {
             dataContext.listaUzytkownikow.Add(uz);
@@ -43,61 +44,14 @@ namespace Zad1
         {
             dataContext.zdarzenia.Add(zd);
         }
-
-        // wywalic te funkcje potem bo te funkcje sa juz w dataService
-        //public void AddZdarzenieWypozyczenie(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz)
-        //{
-        //    Zdarzenie zd1 = new Zdarzenie();
-        //    zd1.Kto = uz;
-        //    zd1.Co = eg;
-        //    zd1.KiedyWypozyczyl = dataWypoz;
-        //    zd1.KiedyZwrocil = dataWypoz;
-        //    dataContext.zdarzenia.Add(zd1);
-        //}
-        //public void AddZdarzenieZwrot(Zdarzenie zd)
-        //{
-        //    //TODO
-        //    if(dataContext.zdarzenia.Contains(zd))
-        //    {
-        //        dataContext.zdarzenia.
-        //    }
-        //    foreach (var item in dataContext.zdarzenia.as)
-        //    {
-        //        item.
-        //    }
-        //}
-
-        //public void AddZdarzenieZwrot(Uzytkownik uz, Egzemplarz eg, DateTime dataWypoz, DateTime dataZwrotu) // TODO moze wywal
-        //{
-        //    Zdarzenie zd1 = new Zdarzenie();
-        //    zd1.Kto = uz;
-        //    zd1.Co = eg;
-        //    zd1.KiedyWypozyczyl = dataWypoz;
-        //    zd1.KiedyWypozyczyl = dataZwrotu;
-        //    zd1.Kara = (dataZwrotu - dataWypoz).Days;
-        //    //TimeSpan wynik = dataZwrotu - dataWypoz;
-        //    //zd1.Kara = wynik.Days;
-        //    dataContext.zdarzenia.Add(zd1);
-        //}
-
-
+        
         public void AddOpisStanuEgzemplarza(OpisStanuEgzemplarza opisStanu)
         {
             dataContext.opisStanow.Add(opisStanu);
         }
 
-        // zmienilem te funkcje bo chyba lepiej tak w tej klasie robic
-        //public void AddOpisStanuEgzemplarza(DateTime dataZakupu, Boolean dostepna, string opisStanu, Egzemplarz ktoryEgzemplarz)
-        //{
-        //    OpisStanuEgzemplarza ose = new OpisStanuEgzemplarza();
-        //    ose.DataZakupu = dataZakupu;
-        //    ose.Dostepna = dostepna;
-        //    ose.OpisStanu = opisStanu;
-        //    ose.KtoryEgzemplarz = ktoryEgzemplarz;
-        //    dataContext.opisStanow.Add(ose);
-        //}
 
-        /// ******************** Get
+        /// ******************************** Get
 
         public Uzytkownik GetUzytkownika(int pesel) //// TODO sprawdz czy dziala  - zmieni ja zeb inaczej dzialala
         {
@@ -150,7 +104,6 @@ namespace Zad1
                    select e;
         }
 
-
         public List<OpisStanuEgzemplarza> GetAllOpisStanuEgzemplarza()
         {
             return dataContext.opisStanow;
@@ -158,6 +111,7 @@ namespace Zad1
 
 
         // ******************** Update
+
         public void UpdateUzytkownik(Uzytkownik stary, Uzytkownik nowy)
         {
             stary.Adres = nowy.Adres;
@@ -169,9 +123,7 @@ namespace Zad1
         public void UpdateEgzemplarz(Egzemplarz stary, Egzemplarz nowy)
         {
             stary.Id = nowy.Id;
-            //stary.LicznikWypozyczen = nowy.LicznikWypozyczen;
             stary.Tytul = nowy.Tytul;
-            //stary.RodzajEgz = nowy.RodzajEgz;
         }
 
         public void UpdateZdarzenie(Zdarzenie stary, Zdarzenie nowy)
@@ -215,6 +167,7 @@ namespace Zad1
         {
             return dataContext.egzemplarze.Count;
         }
+
         public int SizeOfZdarzenia()
         {
             return dataContext.zdarzenia.Count;
@@ -234,7 +187,6 @@ namespace Zad1
             {
                s+= item.ToString() + "\n";
             }
-            //return dataContext.listaUzytkownikow.ToString();
             return s;
         }
 

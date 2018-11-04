@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Zad1
 {
-    public class WypelnianieStalymi : Wypelnianie
+    public class WypelnianieStalymi : IWypelnianie
     {
 
-        override public void Wypelnij(ref DataContext contex)
+        public void Wypelnij(ref DataContext contex)
         {
             // wypelniam uzytkownikow
             Uzytkownik u1 = new Uzytkownik

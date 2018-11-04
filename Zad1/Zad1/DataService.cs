@@ -31,28 +31,6 @@ namespace Zad1
             return s;
         }
        
- 
-        //TODO czy nie trzeba dodac tutaj  jeszcze wysietlania Zdarzen
-        public string WyswietlanieDanychPowiazanych()
-        {
-            string s = " ";
-            foreach (var osoba in repozytorium.GetAllUzytkownikow())
-            {
-                s += osoba.ToString() + " ";
-
-                foreach (var elem in repozytorium.GetAllZdarzenia())
-                {
-                    if(osoba.Equals(elem.Kto))
-                    {
-                        s += elem.ToString();
-                    }
-
-                }
-                s += "\n";
-            }
-            return s;
-        }
-
         public string WyswietlWszystkichUzyt()
         {
             return repozytorium.pokaz_wszystkich_uzytkownikow();
@@ -78,7 +56,6 @@ namespace Zad1
             return s;
         }
 
-
         public string WyswietlWszystkieOpisyStanowEgzemplarzy()
         {
             string s = "";
@@ -88,6 +65,49 @@ namespace Zad1
             }
             return s;
         }
+
+        public string WyswietlanieDanychPowiazanych()
+        {
+            string s = " ";
+            foreach (var osoba in repozytorium.GetAllUzytkownikow())
+            {
+                s += osoba.ToString() + " \n";
+
+                foreach (var elem in repozytorium.GetAllZdarzenia())
+                {
+                    if (osoba.Equals(elem.Kto))
+                    {
+                        s += elem.ToString();
+                    }
+
+                }
+                s += "\n";
+            }
+            return s;
+        }
+
+        public string WyswietlanieKsiazekPowiazanePoStanach()
+        {
+
+            string s = "";
+            foreach (var egz in repozytorium.GetAllEgzemplarze())
+            {
+                s += egz.ToString() + " \n";
+
+                foreach (var opis in repozytorium.GetAllOpisStanuEgzemplarza())
+                {
+                    if (egz.Equals(opis.KtoryEgzemplarz))
+                    {
+                        s +="\t\t" + opis.ToStringPowiazane();
+                    }
+
+                }
+                s += "\n";
+            }
+            return s;
+
+        }
+
 
         // ********************** Uzytkownicy **********************
 
@@ -122,6 +142,11 @@ namespace Zad1
             return repozytorium.GetAllUzytkownikow();
         }
 
+        public Uzytkownik znajdzUzytkownika(int pesel)
+        {
+            return repozytorium.GetUzytkownika(pesel);
+        }
+
         // ********************** Egzemplarze **********************
 
         public void DodajEgzemplarz(Egzemplarz e)
@@ -139,11 +164,15 @@ namespace Zad1
             repozytorium.UpdateEgzemplarz(stary, nowy);
         }
 
+        public Egzemplarz znajdzEgzemplarz(int id)
+        {
+            return repozytorium.GetEgzemplarz(id);
+        }
 
         // ********************** Zdarzenia **********************
 
 
-        public Boolean Wypozycz(Uzytkownik uz, Egzemplarz eg) // wypozycz
+        public Boolean Wypozycz(Uzytkownik uz, Egzemplarz eg) 
         {
             Boolean czyWypozyczy = false;
 
@@ -181,7 +210,7 @@ namespace Zad1
 
         }
 
-        public void Zwroc(Uzytkownik uz, Egzemplarz eg) // TODO Sprawdz czy zmienia w ryginalnej bazie czy dziala na kopii
+        public void Zwroc(Uzytkownik uz, Egzemplarz eg) // TODO Sprawdz czy zmienia w oryginalnej bazie czy dziala na kopii
         {
             IEnumerable<Zdarzenie> zdarzylySie = this.repozytorium.GetAllZdarzenia();
             foreach (var item in zdarzylySie)
@@ -202,13 +231,11 @@ namespace Zad1
             }
 
         }
-
-
+        
         public void ZmienZdarzenie(Zdarzenie stare, Zdarzenie nowe)
         {
             repozytorium.UpdateZdarzenie(stare, nowe);
         }
-
 
         public List<Zdarzenie> ZwrocWszystkieZdarzenia()
         {

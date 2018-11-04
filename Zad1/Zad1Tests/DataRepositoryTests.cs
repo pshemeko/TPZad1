@@ -13,7 +13,7 @@ namespace Zad1.Tests
     {
 
         
-            Wypelnianie wypelnia = new WypelnianieStalymi();
+            IWypelnianie wypelnia = new WypelnianieStalymi();
             DataContext dataConstexx = new DataContext();
         
 

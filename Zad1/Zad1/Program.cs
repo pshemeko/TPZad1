@@ -15,7 +15,7 @@ namespace Zad1
 
             
             //Wypelnianie wypelnia = new WypelnianieStalymi();
-            Wypelnianie wypelnia = new WypelnianieXMLLinq();
+            IWypelnianie wypelnia = new WypelnianieXMLLinq();
             DataContext dataConstexx = new DataContext();
 
 
@@ -28,6 +28,10 @@ namespace Zad1
             };
                      
             DataService data_serwis= new DataService(repozytorium);
+                    
+            repozytorium.Wypelnij();
+
+            // ******************************** Do tad zostaw
 
             // //serwis.UsunUzytkownika()
             Uzytkownik uzy1 = new Uzytkownik();
@@ -36,7 +40,6 @@ namespace Zad1
             uzy1.Nazwisko = "maly";
             uzy1.Pesel = 12345;
 
-            repozytorium.Wypelnij();
             //Console.WriteLine(repozytorium.pokaz_wszystkich_uzytkownikow());
             //Console.WriteLine("\ndodalem ludka \n\n");
             //repozytorium.AddUzytkownika(uzy1);
@@ -108,11 +111,15 @@ namespace Zad1
             //    }
             //}
 
-            ////////// do tad
 
-            
 
             Console.WriteLine("DUPA :-)");
+
+
+            //*************************************************  OD do tad
+
+
+
 
             Console.WriteLine(data_serwis.WyswietlEgzemlarze());
 
@@ -124,6 +131,13 @@ namespace Zad1
 
             Console.WriteLine("\n teraz opisy stanow:");
             Console.WriteLine(data_serwis.WyswietlWszystkieOpisyStanowEgzemplarzy());
+
+            Console.WriteLine("\n wszystkie powiazane:");
+            Console.WriteLine(data_serwis.WyswietlanieDanychPowiazanych());
+
+            Console.WriteLine("\n wszystkie powiazane Ksiazki:");
+            Console.WriteLine(data_serwis.WyswietlanieKsiazekPowiazanePoStanach());
+
             Console.ReadKey();
 
         }

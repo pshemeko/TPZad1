@@ -33,6 +33,19 @@ namespace Zad1
             else return "Puste";
         }
 
+        public string ToStringPowiazane()
+        {
+            if (KtoryEgzemplarz != null)
+            {
+                string s = " Data zakupu " + DataZakupu + " Stan:" + OpisStanu + " Wypozyczono " + LicznikWypozyczen;
+                if (1 == LicznikWypozyczen)
+                { s += " raz.\n"; }
+                else s += " razy.\n";
+                return s;
+            }
+            else return "Puste";
+        }
+
         public override bool Equals(object obj)
         {
             if (obj is OpisStanuEgzemplarza)

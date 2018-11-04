@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Zad1
 {
-    class WypelnianieXMLLinq : Wypelnianie
+    class WypelnianieXMLLinq : IWypelnianie
     {
         ///////   Klasy potrzebne do wczytywania z XML
         
@@ -77,7 +77,7 @@ namespace Zad1
 
         //********************* Główna metoda
 
-        override public void Wypelnij(ref DataContext contex)
+        public void Wypelnij(ref DataContext contex)
         {
 
             //**************************** Dodajemy osoby

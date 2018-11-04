@@ -12,16 +12,26 @@ o co chodzi z tym ObserverCollection - jak z tego mamy korzystac czy ma to wypis
 ewentualnie jak zaimpelemntowaæ enuma poprzez XML
 (moja odpowiedz przez string i parowanie)
 
-czy musimy robic hash code w klasach??
+czy musimy robic hash code w klasach i po c one??
+
+czy te 4 klasy podstawowe powinny byc w innym katalogu?
+
+czy klasa Wypelnianie powinna byc interface czy abstrakcyjna
+
+
+pokrycie kodu testami - jak sprawdzic
+
 
 do zrobienia:
-trzeba podac te same dane w wypelnianiStalymi oraz wypelnianieXMLLinq
 
-jak dziala polimorfizm i kirdy uruchomic w c# czemu wyswietla to string z egzemplarz a nie z ksiazka (mozwa o program.cs)
+jak dziala polimorfizm i kiedy uruchomic w c# czemu wyswietla to string z egzemplarz a nie z ksiazka (mozwa o program.cs)
 chyba jest juz ok
 
 
 musimy wpisac wypelnianie stalymi tak by bylo z sensem i wiecej oraz w xml wpisac kilkaopisow egzemplarza i darzenia
 
-dodam jeszcze wyswietlanie powiazanyc danych 
+
 trzeba tez zrobic by jakos z sensem wyswietlalo informacje
+
+pesel na string zmien
+klasa wypelnianie zmienic na interface

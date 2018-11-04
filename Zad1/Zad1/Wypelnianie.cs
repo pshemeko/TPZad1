@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Zad1
 {
     // TODO lub jako interface moze lepiej
-    abstract public class Wypelnianie  
+    public interface IWypelnianie  
     {
 
-        abstract public void Wypelnij(ref DataContext contex);
+        void Wypelnij(ref DataContext contex);
     }
 }
