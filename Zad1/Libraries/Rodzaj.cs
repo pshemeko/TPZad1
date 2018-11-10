@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Zad1
+namespace Libraries
 {
     public enum Rodzaj : byte
     {

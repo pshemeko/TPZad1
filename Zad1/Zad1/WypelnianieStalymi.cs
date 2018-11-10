@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Libraries;
+using Logic;
 
-namespace Zad1
+namespace Fill
 {
     public class WypelnianieStalymi : IWypelnianie
     {

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Libraries;
 
-namespace Zad1
+namespace Logic
 {
     static class Constans
     {

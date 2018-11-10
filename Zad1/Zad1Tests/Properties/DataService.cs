@@ -222,9 +222,9 @@ namespace Logic
                     {
                         item.KiedyZwrocil = DateTime.Now;
                         var roznica = (item.KiedyZwrocil - item.KiedyWypozyczyl).TotalDays;
-                        if ( roznica > Constans.LIMIT_DNI_WYPOZYCZENIA)
+                        if ( roznica > 10)//Constans.LIMIT_DNI_WYPOZYCZENIA)
                         {
-                            item.Kara = (int)roznica * Constans.KWOTA_KARY_ZA_DZIEN;
+                            item.Kara = (int)roznica * 20; //Constans.KWOTA_KARY_ZA_DZIEN;
                         }
                     }
                 }

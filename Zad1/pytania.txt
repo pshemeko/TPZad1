@@ -1,4 +1,10 @@
+czemu jak przenowsze wypelnianie talymi i xml do testow lub gdzies indziej to mam blad XDocument
 
+
+
+
+
+////////////
 czy te testy sa ok ze funkcj Add testujemy przez get- czy jest inny sposob  i inaczej to trzeba robic bo klasa me element prywatny contex
 
 

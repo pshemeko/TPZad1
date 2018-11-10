@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Web;
+using Libraries;
+using System.Xml;
+using Logic;
 
-namespace Zad1
+namespace Fill
 {
     class WypelnianieXMLLinq : IWypelnianie
     {
@@ -81,8 +84,8 @@ namespace Zad1
         {
 
             //**************************** Dodajemy osoby
-            XDocument xml = XDocument.Load(@"..\..\xml\Dane.xml");
-
+            XDocument xml = XDocument.Load(@"..\xml\Dane.xml");  //    ..\..\xml\Dane.xml");
+            //XDocument ddd;
             List<Uzytkownik> listaU = (
                 from osoba in xml.Root.Elements("osoba")
                 select new Uzytkownik
