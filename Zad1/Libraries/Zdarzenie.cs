@@ -15,6 +15,12 @@ namespace Libraries
         public Uzytkownik Kto { get; set; }
         public Egzemplarz Co { get; set; }
 
+        //public Zdarzenie(Uzytkownik k, Egzemplarz e)
+        //{
+        //    kto = k;
+        //    co = e;
+        //}
+
 
         public  virtual string ToString()
         {

@@ -7,7 +7,7 @@ using Libraries;
 
 namespace Logic
 {
-    // TODO lub jako interface moze lepiej
+    
     public interface IWypelnianie  
     {
 

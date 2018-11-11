@@ -11,6 +11,13 @@ namespace Libraries
         protected DateTime kiedyZwrocil;
         protected int kara;
 
+        //public ZdarzenieZwrotu(Uzytkownik k, Egzemplarz e, DateTime dat, int kar)
+        //    : base(k, e)
+        //{
+        //    kiedyZwrocil = dat;
+        //    kara = kar;
+        //}
+
         //public Zdarzenie (Uzytkownik uzytkownik, Egzemplarz egzemplarz, DateTime dataWypozyczenia, DateTime dataZwrotu, int kara)
         //{
         //    this.kto = uzytkownik;

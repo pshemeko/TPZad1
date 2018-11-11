@@ -12,7 +12,7 @@ namespace Logic
         private DataContext dataContext;
         private IWypelnianie wypelniacz;
 
-        public DataRepository(IWypelnianie wyp)
+        public DataRepository( IWypelnianie wyp)
         {
             this.wypelniacz = wyp;
         }
@@ -27,7 +27,7 @@ namespace Logic
             wypelniacz.Wypelnij(ref dataContext);
         }
 
-        ////TODO dodaj inne metody by dodawac elementy jak dodaj/usun/zmien Egzemplarz, Uzytkownika - uwaga rozne klasy bo dziedziczenie
+
         
         // ******************** Add
 
@@ -54,7 +54,7 @@ namespace Logic
 
         /// ******************************** Get
 
-        public Uzytkownik GetUzytkownika(int pesel) //// TODO sprawdz czy dziala  - zmieni ja zeb inaczej dzialala
+        public Uzytkownik GetUzytkownika(int pesel) 
         {
             Predicate<Uzytkownik> predykat = FindPoints;
 
@@ -66,7 +66,7 @@ namespace Logic
             return dataContext.listaUzytkownikow.Find(predykat);
         }
 
-        public Egzemplarz GetEgzemplarz(int id) //// TODO sprawdz czy dziala czy pobiera klucz czy numer elem w kolejnosci
+        public Egzemplarz GetEgzemplarz(int id) 
         {
 
             return dataContext.egzemplarze[id];
@@ -202,7 +202,16 @@ namespace Logic
             }
             return s;
         }
+        public string pokaz_wszystkie_Egzeplarze()
+        {
+            string s = "";
+            foreach (var item in dataContext.egzemplarze)
+            {
+                s += item.ToString() + "\n";
+            }
+            return s;
+        }
 
-        
+
     }
 }

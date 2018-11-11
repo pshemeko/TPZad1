@@ -16,6 +16,12 @@ namespace Libraries
             set { kiedyWypozyczyl = value; }
         }
 
+        //public ZdarzeniePozyczenia(Uzytkownik k, Egzemplarz e, DateTime dat)
+        //    :base(k,e)
+        //{
+        //    kiedyWypozyczyl = dat;
+        //}
+
         public override string ToString()
         {
             //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby

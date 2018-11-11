@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Libraries
 {
-    public class Uzytkownik         //TODO zrobic jako klasa abstrakcyjna
+    public class Uzytkownik         
     {
         private string imie;
         private string nazwisko;

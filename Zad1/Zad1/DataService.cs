@@ -12,7 +12,7 @@ namespace Logic
         private DataRepository repozytorium;
 
 
-        public DataService(DataRepository repo)
+        public DataService( DataRepository repo)
         {
             
             repozytorium = repo;
@@ -111,13 +111,13 @@ namespace Logic
 
         // ********************** Uzytkownicy **********************
 
-        //TODO do sprawdzenia i przemyslenia co z elementami zaleznymi od obiektow kasowanych bo chyba sie posypie baza jak wyswietlisz zdarzenia pousunieciu uzytkownika
+        
         public void UsunUzytkownika(Uzytkownik uz)
         {
             if (!repozytorium.DeleteUzytkownik(uz)) throw new ArgumentException("Nie ma w repozytorium uzytkownika" + uz.ToString());
         }
 
-        public void DodajUzytkownika(Uzytkownik uz)
+        public void DodajUzytkownika(Uzytkownik uz) // TODO  przerobic na bool zamiast rzucania wyjatkow
         {
             if (! (repozytorium.GetAllUzytkownikow().Contains(uz)))
             {
@@ -126,9 +126,9 @@ namespace Logic
             else throw new ArgumentException("ten uzytkonik juz jest w repozytorium" + uz.ToString());
         }
 
-        public void ZmienNazwiskoUzytkownika(Uzytkownik uz, string nazw)    // TODO Przetestowac czy bedzie ten sam uzytkownik z nowym nazwiskiem czy stworzy totalnie nowego uzytkownika
+        public void ZmienNazwiskoUzytkownika(Uzytkownik uz, string nazw)   
         {
-            if (!(repozytorium.GetAllUzytkownikow().Contains(uz)))
+            if ((repozytorium.GetAllUzytkownikow().Contains(uz)))
             {
                 Uzytkownik tmp = uz;
                 tmp.Nazwisko = nazw;
@@ -154,7 +154,7 @@ namespace Logic
             repozytorium.AddEgzemplarz(e);
         }
 
-        public void UsunEgzemplarz(Egzemplarz e)    // TODO sprawdz czy dziala
+        public void UsunEgzemplarz(Egzemplarz e)
         {
             repozytorium.DeleteEgzemplarz(e.Id);
         }
@@ -209,7 +209,7 @@ namespace Logic
 
 
 
-        public bool Zwroc(Uzytkownik uz, Egzemplarz eg) // TODO Sprawdz czy zmienia w oryginalnej bazie czy dziala na kopii
+        public bool Zwroc(Uzytkownik uz, Egzemplarz eg) 
         {
             /* IEnumerable<Zdarzenie> zdarzylySie = this.repozytorium.GetAllZdarzenia();
              foreach (var item in zdarzylySie)
@@ -278,7 +278,7 @@ namespace Logic
             return lis;
         }
 
-        // TODO zrobic rezerwowanie ksiazki oraz wypozyczanie
+        
 
         // wyswietlic wszystkie wypozyczenia (zdarzenia) uzytkownika
 
