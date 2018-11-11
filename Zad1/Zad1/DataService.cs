@@ -112,29 +112,41 @@ namespace Logic
         // ********************** Uzytkownicy **********************
 
         
-        public void UsunUzytkownika(Uzytkownik uz)
+        public Boolean UsunUzytkownika(Uzytkownik uz)
         {
-            if (!repozytorium.DeleteUzytkownik(uz)) throw new ArgumentException("Nie ma w repozytorium uzytkownika" + uz.ToString());
+            Boolean usunieto = false;
+            if (!repozytorium.DeleteUzytkownik(uz))
+            {
+                //throw new ArgumentException("Nie ma w repozytorium uzytkownika" + uz.ToString());
+                usunieto = true;
+            }
+            return usunieto;
         }
 
-        public void DodajUzytkownika(Uzytkownik uz) // TODO  przerobic na bool zamiast rzucania wyjatkow
+        public Boolean DodajUzytkownika(Uzytkownik uz) // TODO  przerobic na bool zamiast rzucania wyjatkow
         {
+            Boolean dodano = false;
             if (! (repozytorium.GetAllUzytkownikow().Contains(uz)))
             {
                 repozytorium.AddUzytkownika(uz);
+                dodano = true;
             }
-            else throw new ArgumentException("ten uzytkonik juz jest w repozytorium" + uz.ToString());
+            return dodano;
+            //else throw new ArgumentException("ten uzytkonik juz jest w repozytorium" + uz.ToString());
         }
 
-        public void ZmienNazwiskoUzytkownika(Uzytkownik uz, string nazw)   
+        public Boolean ZmienNazwiskoUzytkownika(Uzytkownik uz, string nazw)   
         {
+            Boolean zmieniono = false;
             if ((repozytorium.GetAllUzytkownikow().Contains(uz)))
             {
                 Uzytkownik tmp = uz;
                 tmp.Nazwisko = nazw;
                 repozytorium.UpdateUzytkownik(uz, tmp);
+                zmieniono = true;
             }
-            else throw new ArgumentException("tego uzytkownika nie ma w repozytorium" + uz.ToString());
+            return zmieniono;
+            //else throw new ArgumentException("tego uzytkownika nie ma w repozytorium" + uz.ToString());
         }
 
         public List<Uzytkownik> ZwrocWszystkichUzytkownikow()
@@ -279,10 +291,7 @@ namespace Logic
         }
 
         
-
         // wyswietlic wszystkie wypozyczenia (zdarzenia) uzytkownika
-
-
-
+        
     }
 }

@@ -589,8 +589,6 @@ namespace Zad1.Tests
             Assert.AreEqual(1, repozytorium.SizeOfEgzemplarze());
 
         }
-            
-        // TODO testy zwracania oraz test wypozyczenia i zwrocenia rzgemplarza przez uzytkiwnia 
-        //TODO test czy zmienia sie licznik wypozyczen
+         
     }
 }
