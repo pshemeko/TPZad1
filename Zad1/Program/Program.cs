@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,39 +7,43 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
 using Libraries;
+using Logic;
+using Fill;
 
-namespace Logic
+
+namespace Zad1Tests
 {
     class Program
     {
         static void Main(string[] args)
         {
 
-            
-            IWypelnianie wypelnia = new WypelnianieXMLLinq();
+
+            // IWypelnianie wypelnia = new WypelnianieXMLLinq();
+            IWypelnianie wypelnia = new WypelnianieStalymi();
             DataContext dataConstexx = new DataContext();
 
 
             DataRepository repozytorium = new DataRepository(wypelnia);
             {
                 repozytorium.DataContex = dataConstexx;
-                
-                
+
+
             };
-                     
-            DataService data_serwis= new DataService(repozytorium);
-                    
+
+            DataService data_serwis = new DataService(repozytorium);
+
             repozytorium.Wypelnij();
 
             // ******************************** Do tad zostaw
 
-            
+
             Uzytkownik uzy1 = new Uzytkownik();
             uzy1.Adres = "Piotk";
             uzy1.Imie = "Olek";
             uzy1.Nazwisko = "maly";
             uzy1.Pesel = 12345;
-            
+
 
             data_serwis.DodajUzytkownika(uzy1);
 
@@ -61,7 +65,7 @@ namespace Logic
 
             //////////////// serializuje do XML ze str http://www.altcontroldelete.pl/artykuly/xml-w-c-serializacja-obiektow-do-xmla/
             ///
-            
+
 
 
             List<DateTime> lisaaa = new List<DateTime>();
@@ -106,4 +110,3 @@ namespace Logic
         }
     }
 }
-*/
