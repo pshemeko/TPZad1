@@ -190,11 +190,11 @@ namespace Logic
                             
                 if (znalezionyOpis.Dostepna)
                 {
-                    Zdarzenie zd = new Zdarzenie();
+                    ZdarzeniePozyczenia zd = new ZdarzeniePozyczenia();
                     zd.Co = eg;
                     zd.Kto = uz;
                     zd.KiedyWypozyczyl = DateTime.Now;
-                    zd.KiedyZwrocil = zd.KiedyWypozyczyl;
+                    //zd.KiedyZwrocil = zd.KiedyWypozyczyl;
 
                     repozytorium.AddZdarzenie(zd);
 
@@ -210,9 +210,9 @@ namespace Logic
 
         }
 
-        public void Zwroc(Uzytkownik uz, Egzemplarz eg) // TODO Sprawdz czy zmienia w oryginalnej bazie czy dziala na kopii
+        public Boolean Zwroc(Uzytkownik uz, Egzemplarz eg) // TODO Sprawdz czy zmienia w oryginalnej bazie czy dziala na kopii
         {
-            IEnumerable<Zdarzenie> zdarzylySie = this.repozytorium.GetAllZdarzenia();
+            /*IEnumerable<Zdarzenie> zdarzylySie = this.repozytorium.GetAllZdarzenia();
             foreach (var item in zdarzylySie)
             {
                 if (item.Co == eg && item.Kto == uz)    // gdy znajde tego uzytkownika i ten egzemplarz
@@ -229,9 +229,44 @@ namespace Logic
                     }
                 }
             }
+            */
+            Boolean czyZwrocil = false;
+
+            if (repozytorium.GetAllUzytkownikow().Contains(uz))
+            {
+
+                Predicate<OpisStanuEgzemplarza> predykat = CzyEgzemplarz;
+
+                bool CzyEgzemplarz(OpisStanuEgzemplarza opis)
+                {
+                    return opis.Equals(eg);
+                }
+
+                OpisStanuEgzemplarza znalezionyOpis = repozytorium.GetAllOpisStanuEgzemplarza().Find(predykat);
+
+                if (znalezionyOpis.Dostepna)
+                {
+                    ZdarzenieZwrotu zd = new ZdarzenieZwrotu();
+                    zd.Co = eg;
+                    zd.Kto = uz;
+                    //zd.KiedyWypozyczyl = DateTime.Now;
+                    zd.KiedyZwrocil = DateTime.Now;
+                    zd.Kara = 555;// (zd. zd.KiedyWypozyczyl  //TODO  chyba trzeba zrobic kwote kary lub usunac kare
+                    repozytorium.AddZdarzenie(zd);
+
+                    znalezionyOpis.Dostepna = false;
+                    czyZwrocil = true;
+                    znalezionyOpis.LicznikWypozyczen = znalezionyOpis.LicznikWypozyczen + 1;    // zwiekrzam licznik wyypozyczen
+
+                }
+
+            }
+
+            return czyZwrocil;
+
 
         }
-        
+
         public void ZmienZdarzenie(Zdarzenie stare, Zdarzenie nowe)
         {
             repozytorium.UpdateZdarzenie(stare, nowe);

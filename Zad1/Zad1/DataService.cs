@@ -190,45 +190,76 @@ namespace Logic
                             
                 if (znalezionyOpis.Dostepna)
                 {
-                    Zdarzenie zd = new Zdarzenie();
+                    ZdarzeniePozyczenia zd = new ZdarzeniePozyczenia();
                     zd.Co = eg;
                     zd.Kto = uz;
                     zd.KiedyWypozyczyl = DateTime.Now;
-                    zd.KiedyZwrocil = zd.KiedyWypozyczyl;
+                    //zd.KiedyZwrocil = zd.KiedyWypozyczyl;
 
                     repozytorium.AddZdarzenie(zd);
 
                     znalezionyOpis.Dostepna = false;
                     czyWypozyczy = true;
                     znalezionyOpis.LicznikWypozyczen = znalezionyOpis.LicznikWypozyczen + 1;    // zwiekrzam licznik wyypozyczen
-
                 }
-
             }
-
             return czyWypozyczy;
-
         }
 
-        public void Zwroc(Uzytkownik uz, Egzemplarz eg) // TODO Sprawdz czy zmienia w oryginalnej bazie czy dziala na kopii
+
+
+
+        public bool Zwroc(Uzytkownik uz, Egzemplarz eg) // TODO Sprawdz czy zmienia w oryginalnej bazie czy dziala na kopii
         {
-            IEnumerable<Zdarzenie> zdarzylySie = this.repozytorium.GetAllZdarzenia();
-            foreach (var item in zdarzylySie)
+            /* IEnumerable<Zdarzenie> zdarzylySie = this.repozytorium.GetAllZdarzenia();
+             foreach (var item in zdarzylySie)
+             {
+                 if (item.Co == eg && item.Kto == uz)    // gdy znajde tego uzytkownika i ten egzemplarz
+                 {
+                     if(item.KiedyWypozyczyl == item.KiedyZwrocil) // i gdy to zdarzenie jest ostatnio dodane tj nie jest wczesniejszy wypozyczeniem ksiazki
+                                                                     // bo cyba przy utworzeniu nowego data zwrtu est ta sama co wypozyczenia
+                     {
+                         item.KiedyZwrocil = DateTime.Now;
+                         var roznica = (item.KiedyZwrocil - item.KiedyWypozyczyl).TotalDays;
+                         if ( roznica > Constans.LIMIT_DNI_WYPOZYCZENIA)
+                         {
+                             item.Kara = (int)roznica * Constans.KWOTA_KARY_ZA_DZIEN;
+                         }
+                     }
+                 }
+             }
+             */
+            Boolean CzyZwrocil = false;
+
+            if (repozytorium.GetAllUzytkownikow().Contains(uz))
             {
-                if (item.Co == eg && item.Kto == uz)    // gdy znajde tego uzytkownika i ten egzemplarz
+
+                Predicate<OpisStanuEgzemplarza> predykat = CzyEgzemplarz;
+
+                bool CzyEgzemplarz(OpisStanuEgzemplarza opis)
                 {
-                    if(item.KiedyWypozyczyl == item.KiedyZwrocil) // i gdy to zdarzenie jest ostatnio dodane tj nie jest wczesniejszy wypozyczeniem ksiazki
-                                                                    // bo cyba przy utworzeniu nowego data zwrtu est ta sama co wypozyczenia
-                    {
-                        item.KiedyZwrocil = DateTime.Now;
-                        var roznica = (item.KiedyZwrocil - item.KiedyWypozyczyl).TotalDays;
-                        if ( roznica > Constans.LIMIT_DNI_WYPOZYCZENIA)
-                        {
-                            item.Kara = (int)roznica * Constans.KWOTA_KARY_ZA_DZIEN;
-                        }
-                    }
+                    return opis.Equals(eg);
+                }
+
+                OpisStanuEgzemplarza znalezionyOpis = repozytorium.GetAllOpisStanuEgzemplarza().Find(predykat);
+
+                if (!znalezionyOpis.Dostepna)
+                {
+                    ZdarzenieZwrotu zd = new ZdarzenieZwrotu();
+                    zd.Co = eg;
+                    zd.Kto = uz;
+                    //zd.KiedyWypozyczyl = DateTime.Now;// TODO - - zmienic na wczesniejsza ate z innego zdarzenia pozyczenia
+                    zd.KiedyZwrocil = DateTime.Now;
+
+                    repozytorium.AddZdarzenie(zd);
+
+                    znalezionyOpis.Dostepna = true;
+                    CzyZwrocil = true;
+                    //znalezionyOpis.LicznikWypozyczen = znalezionyOpis.LicznikWypozyczen + 1;    // zwiekrzam licznik wyypozyczen
                 }
             }
+            return CzyZwrocil;
+
 
         }
         

@@ -45,37 +45,73 @@ namespace Fill
 
             string dateString = "5/1/2008 8:30:52 AM";
 
-            Zdarzenie z1 = new Zdarzenie()
+            Zdarzenie z1 = new ZdarzenieZwrotu()
             {
                 Kto = u1,
                 Co = e1,
-                KiedyWypozyczyl = DateTime.Parse(dateString,
-                                  System.Globalization.CultureInfo.InvariantCulture),
+                //KiedyWypozyczyl = DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture),
                 KiedyZwrocil = DateTime.Now,
                 Kara = 22,
             };
+            Zdarzenie zp1 = new ZdarzeniePozyczenia()
+            {
+                Kto = u1,
+                Co = e1,
+                KiedyWypozyczyl = DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture),
+                //KiedyZwrocil = DateTime.Now,
+                //Kara = 22,
+            };
 
-            Zdarzenie z2 = new Zdarzenie
+            Zdarzenie z2 = new ZdarzenieZwrotu
+            {
+                Kto = u1,
+                Co = e2,
+                //KiedyWypozyczyl = Convert.ToDateTime(dateString),// new DateTime(2018, 6, 8, 16, 0, 0), //01/03/2008 07:00:00
+                KiedyZwrocil = DateTime.Today, //new DateTime(2018, 6, 15, 13, 0, 0),
+                Kara = 33,
+            };
+            Zdarzenie zp2 = new ZdarzeniePozyczenia
             {
                 Kto = u1,
                 Co = e2,
                 KiedyWypozyczyl = Convert.ToDateTime(dateString),// new DateTime(2018, 6, 8, 16, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = DateTime.Today, //new DateTime(2018, 6, 15, 13, 0, 0),
-                Kara = 33,
+                //KiedyZwrocil = DateTime.Today, //new DateTime(2018, 6, 15, 13, 0, 0),
+                //Kara = 33,
             };
 
-            Zdarzenie z3 = new Zdarzenie
+            Zdarzenie z3 = new ZdarzenieZwrotu
             {
                 Kto = u2,
                 Co = e1,
-                KiedyWypozyczyl = new DateTime(2018, 7, 9, 13, 10, 0), //01/03/2008 07:00:00
+                //KiedyWypozyczyl = new DateTime(2018, 7, 9, 13, 10, 0), //01/03/2008 07:00:00
                 KiedyZwrocil = new DateTime(2018, 7, 9, 13, 10, 0), //01/03/2008 07:00:00
                 Kara = 0,
             };
 
+            Zdarzenie zp3 = new ZdarzeniePozyczenia
+            {
+                Kto = u2,
+                Co = e1,
+                KiedyWypozyczyl = new DateTime(2018, 7, 9, 13, 10, 0), //01/03/2008 07:00:00
+                //KiedyZwrocil = new DateTime(2018, 7, 9, 13, 10, 0), //01/03/2008 07:00:00
+                //Kara = 0,
+            };
+
+            Zdarzenie z4 = new ZdarzeniePozyczenia
+            {
+                Kto = u2,
+                Co = e1,
+                KiedyWypozyczyl = new DateTime(2018, 9, 11, 19, 20, 0), //01/03/2008 07:00:00
+                
+            };
+
             contex.zdarzenia.Add(z1);
+            contex.zdarzenia.Add(zp1);
             contex.zdarzenia.Add(z2);
+            contex.zdarzenia.Add(zp2);
             contex.zdarzenia.Add(z3);
+            contex.zdarzenia.Add(zp3);
+            contex.zdarzenia.Add(z4);
 
             //// opis stanow egzemplarzy
             OpisStanuEgzemplarza oe1= new OpisStanuEgzemplarza

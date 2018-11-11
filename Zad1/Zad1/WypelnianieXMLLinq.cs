@@ -15,21 +15,35 @@ namespace Fill
     {
         ///////   Klasy potrzebne do wczytywania z XML
         
-        public class PotrzebnaDoSynchronizacjiZdarzen
+        public class PotrzebnaDoSynchronizacjiZdarzenPozyczen
+        {
+            public int Osoba { get; set; }
+            public int Ksiazka { get; set; }
+            public DateTime Wypoz { get; set; }
+
+            public PotrzebnaDoSynchronizacjiZdarzenPozyczen(int os, int ks, DateTime dw)
+            {
+                this.Osoba = os;
+                this.Ksiazka = ks;
+                this.Wypoz = dw;
+            }
+        }
+
+        public class PotrzebnaDoSynchronizacjiZdarzenZwrotu
         {
             public int Osoba { get; set; }
             public int Ksiazka { get; set; }
             //public string Wypoz { get; set; }
             //public string Zwrot { get; set; }
-            public DateTime Wypoz { get; set; }
+            //public DateTime Wypoz { get; set; }
             public DateTime Zwrot { get; set; }
             public int Kar { get; set; }
 
-            public PotrzebnaDoSynchronizacjiZdarzen(int os, int ks, DateTime dw, DateTime dz, int ka)
+            public PotrzebnaDoSynchronizacjiZdarzenZwrotu(int os, int ks, DateTime dz, int ka) //DateTime dw, DateTime dz, int ka)
             {
                 this.Osoba = os;
                 this.Ksiazka = ks;
-                this.Wypoz = dw;
+                //this.Wypoz = dw;
                 this.Zwrot = dz;
                 this.Kar = ka;
             }
@@ -133,20 +147,20 @@ namespace Fill
             }
 
             ////////////////////////////////////////////////////////////////////////////
-            //**************************** Dodajemy wypozyczenia
+            //**************************** Dodajemy zwroty
 
 
-            List<PotrzebnaDoSynchronizacjiZdarzen> listaZ = (
-            from zdarz in xml.Root.Elements("zdarzenie")
-            select new PotrzebnaDoSynchronizacjiZdarzen
+            List<PotrzebnaDoSynchronizacjiZdarzenZwrotu> listaZ = (
+            from zdarz in xml.Root.Elements("zdarzenieZwrotu")
+            select new PotrzebnaDoSynchronizacjiZdarzenZwrotu
                 (
                 int.Parse(zdarz.Element("kto").Value),
                 int.Parse(zdarz.Element("co").Value),
-                DateTime.Parse(zdarz.Element("kiedyWypozyczyl").Value),
+               // DateTime.Parse(zdarz.Element("kiedyWypozyczyl").Value),
                 DateTime.Parse(zdarz.Element("kiedyZwrocil").Value),
                 int.Parse(zdarz.Element("kara").Value)
                 )
-            ).ToList<PotrzebnaDoSynchronizacjiZdarzen>();
+            ).ToList<PotrzebnaDoSynchronizacjiZdarzenZwrotu>();
 
             
             for (int i = 0; i < listaZ.Count; i++)
@@ -164,16 +178,56 @@ namespace Fill
                     return opis.Pesel.Equals(listaZ.ElementAt(i).Osoba);
                 }
                 // tworze zdarzenie z predykatow
-                Zdarzenie zd = new Zdarzenie();
+                ZdarzenieZwrotu zd = new ZdarzenieZwrotu();
                 zd.Co = lista.Find(predykatK);//  listaZ.ElementAt(i)
                 zd.Kto = listaU.Find(predykatU);
-                zd.KiedyWypozyczyl = Convert.ToDateTime(listaZ.ElementAt(i).Wypoz);
+                //zd.KiedyWypozyczyl = Convert.ToDateTime(listaZ.ElementAt(i).Wypoz);
                 zd.KiedyZwrocil = Convert.ToDateTime(listaZ.ElementAt(i).Zwrot); 
                 zd.Kara = listaZ.ElementAt(i).Kar;
 
                 //dodaje do repozytorium
                 contex.zdarzenia.Add(zd);
             }
+
+            ////////////////////////////////////////////////////////////////////////////
+            //**************************** Dodajemy pozyczenia
+
+
+            List<PotrzebnaDoSynchronizacjiZdarzenPozyczen> listaPoz = (
+            from zdarzPoz in xml.Root.Elements("zdarzeniePozyczenia")
+            select new PotrzebnaDoSynchronizacjiZdarzenPozyczen
+                (
+                    int.Parse(zdarzPoz.Element("kto").Value),
+                    int.Parse(zdarzPoz.Element("co").Value),
+                    DateTime.Parse(zdarzPoz.Element("kiedyWypozyczyl").Value)
+                )
+            ).ToList<PotrzebnaDoSynchronizacjiZdarzenPozyczen>();
+
+
+            for (int i = 0; i < listaPoz.Count; i++)
+            {
+                // tworze predykaty
+                Predicate<Egzemplarz> predykatK = CzyEgzemplarzK;
+                bool CzyEgzemplarzK(Egzemplarz opis)
+                {
+                    return opis.Id.Equals(listaPoz.ElementAt(i).Ksiazka);
+                }
+
+                Predicate<Uzytkownik> predykatU = CzyEgzemplarzU;
+                bool CzyEgzemplarzU(Uzytkownik opis)
+                {
+                    return opis.Pesel.Equals(listaPoz.ElementAt(i).Osoba);
+                }
+                // tworze zdarzenie z predykatow
+                ZdarzeniePozyczenia zd = new ZdarzeniePozyczenia();
+                zd.Co = lista.Find(predykatK);//  listaZ.ElementAt(i)
+                zd.Kto = listaU.Find(predykatU);
+                zd.KiedyWypozyczyl = Convert.ToDateTime(listaPoz.ElementAt(i).Wypoz);
+
+                //dodaje do repozytorium
+                contex.zdarzenia.Add(zd);
+            }
+
 
 
             ////////////////////////////////////////////////////////////////////////////

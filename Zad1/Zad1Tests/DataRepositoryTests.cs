@@ -84,13 +84,13 @@ namespace Zad1.Tests
                 Pesel = 1234,
             };
 
-            Zdarzenie zd = new Zdarzenie
+            ZdarzeniePozyczenia zd = new ZdarzeniePozyczenia
             {
                 Co = egz,
                 Kto = uz,
                 KiedyWypozyczyl = new DateTime(2018, 3, 1, 9, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
-                Kara = 15,
+                //KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
+                //Kara = 15,
             };
 
             Assert.AreEqual(repozytorium.SizeOfZdarzenia(), 0);
@@ -183,13 +183,13 @@ namespace Zad1.Tests
                 Pesel = 1234,
             };
 
-            Zdarzenie zd = new Zdarzenie
+            ZdarzeniePozyczenia zd = new ZdarzeniePozyczenia
             {
                 Co = egz,
                 Kto = uz,
                 KiedyWypozyczyl = new DateTime(2018, 3, 1, 9, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
-                Kara = 15,
+                //KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
+                //Kara = 15,
             };
 
             repozytorium.AddZdarzenie(zd);
@@ -313,21 +313,21 @@ namespace Zad1.Tests
             };
 
 
-            Zdarzenie zd = new Zdarzenie
+            ZdarzeniePozyczenia zd = new ZdarzeniePozyczenia
             {
                 Co = egz,
                 Kto = uz,
                 KiedyWypozyczyl = new DateTime(2018, 3, 1, 9, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
-                Kara = 15,
+                //KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
+                //Kara = 15,
             };
-            Zdarzenie zd2 = new Zdarzenie
+            ZdarzeniePozyczenia zd2 = new ZdarzeniePozyczenia
             {
                 Co = egz2,
                 Kto = uzB,
                 KiedyWypozyczyl = new DateTime(2018, 5, 2, 19, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
-                Kara = 0,
+                //KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
+                //Kara = 0,
             };
 
             repozytorium.AddZdarzenie(zd);
@@ -471,21 +471,21 @@ namespace Zad1.Tests
             };
 
 
-            Zdarzenie zd = new Zdarzenie
+            ZdarzeniePozyczenia zd = new ZdarzeniePozyczenia
             {
                 Co = egz,
                 Kto = uz,
                 KiedyWypozyczyl = new DateTime(2018, 3, 1, 9, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
-                Kara = 15,
+                //KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
+                //Kara = 15,
             };
-            Zdarzenie zd2 = new Zdarzenie
+            ZdarzeniePozyczenia zd2 = new ZdarzeniePozyczenia
             {
                 Co = egz2,
                 Kto = uzB,
                 KiedyWypozyczyl = new DateTime(2018, 5, 2, 19, 0, 0), //01/03/2008 07:00:00
-                KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
-                Kara = 0,
+                //KiedyZwrocil = new DateTime(2018, 5, 2, 19, 0, 0),
+                //Kara = 0,
             };
 
             repozytorium.AddZdarzenie(zd);
@@ -590,5 +590,7 @@ namespace Zad1.Tests
 
         }
             
+        // TODO testy zwracania oraz test wypozyczenia i zwrocenia rzgemplarza przez uzytkiwnia 
+        //TODO test czy zmienia sie licznik wypozyczen
     }
 }

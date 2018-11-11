@@ -127,13 +127,25 @@ namespace Logic
             stary.Tytul = nowy.Tytul;
         }
 
-        public void UpdateZdarzenie(Zdarzenie stary, Zdarzenie nowy)
+        public void UpdateZdarzeniePozyczenie(ZdarzeniePozyczenia stary, ZdarzeniePozyczenia nowy)
+        {
+            stary.Kto = nowy.Kto;
+            stary.Co = nowy.Co;
+            stary.KiedyWypozyczyl = nowy.KiedyWypozyczyl;
+            
+            
+        }
+        public void UpdateZdarzenieZwrotu(ZdarzenieZwrotu stary, ZdarzenieZwrotu nowy)
         {
             stary.Co = nowy.Co;
             stary.Kara = nowy.Kara;
-            stary.KiedyWypozyczyl = nowy.KiedyWypozyczyl;
             stary.KiedyZwrocil = nowy.KiedyZwrocil;
             stary.Kto = nowy.Kto;
+        }
+
+        public void UpdateZdarzenie(Zdarzenie stary, Zdarzenie nowy)
+            {
+            stary = nowy;
         }
 
         public void UpdateOpisStanowEgzemplarza(OpisStanuEgzemplarza stary, OpisStanuEgzemplarza nowy)
