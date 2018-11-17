@@ -9,7 +9,7 @@ using Libraries;
 using System.Xml;
 using Logic;
 
-namespace Fill
+namespace Zad1.Tests
 {
     class WypelnianieXMLLinq : IWypelnianie
     {

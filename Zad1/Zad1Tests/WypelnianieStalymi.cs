@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Libraries;
 using Logic;
 
-namespace Fill
+namespace Zad1.Tests
 {
     public class WypelnianieStalymi : IWypelnianie
     {
