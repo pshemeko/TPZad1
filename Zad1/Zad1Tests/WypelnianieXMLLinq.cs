@@ -9,7 +9,7 @@ using Libraries;
 using System.Xml;
 using Logic;
 
-namespace Zad1.Tests
+namespace Logic
 {
     class WypelnianieXMLLinq : IWypelnianie
     {
@@ -93,8 +93,8 @@ namespace Zad1.Tests
 
 
         //********************* Główna metoda
-
-        public void Wypelnij(ref DataContext contex)
+        
+         public void Wypelnij(ref DataContext contex)
         {
 
             //**************************** Dodajemy osoby
