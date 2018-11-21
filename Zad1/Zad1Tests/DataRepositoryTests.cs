@@ -17,6 +17,8 @@ namespace Zad1.Tests
 
         
             IWypelnianie wypelnia = new WypelnianieStalymi();
+            IWypelnianie wypelniXML = new WypelnianieXMLLinq();
+
             DataContext dataConstexx = new DataContext();
         
 
@@ -396,7 +398,6 @@ namespace Zad1.Tests
                 repozytorium.DataContex = dataConstexx;
             };
 
-            //DataService data_serwis = new DataService(repozytorium);
             ///
 
             Uzytkownik uz = new Uzytkownik()
@@ -414,15 +415,12 @@ namespace Zad1.Tests
                 Pesel = 2345,
             };
 
-            //Assert.Equals(repozytorium.SizeOfUzytkownicy(), 0);
-            //repozytorium.AddUzytkownika(uz);
-            //Assert.AreEqual(repozytorium.GetUzytkownika(1234), uz);
-            //Assert.Equals(repozytorium.SizeOfUzytkownicy(), 1);
             repozytorium.AddUzytkownika(uz);
-            //repozytorium.AddUzytkownika(uzB);
+
             Assert.ReferenceEquals(repozytorium.GetUzytkownika(1234), uz);
             repozytorium.UpdateUzytkownik(uz, uzB);
             Assert.ReferenceEquals(repozytorium.GetUzytkownika(2345), uzB);
+            Assert.IsTrue(uz.Equals(uzB));
             
         }
 
