@@ -1,0 +1,5 @@
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\bin\Release\Libraries.dll
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\bin\Release\Libraries.pdb
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\obj\Release\Libraries.csproj.CoreCompileInputs.cache
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\obj\Release\Libraries.dll
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\obj\Release\Libraries.pdb

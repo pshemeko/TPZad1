@@ -1,0 +1,10 @@
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\bin\Debug\Zad1.dll.config
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\bin\Debug\Zad1.dll
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\bin\Debug\Zad1.pdb
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\bin\Debug\Libraries.dll
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\bin\Debug\Libraries.pdb
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\obj\Debug\Logic.csprojAssemblyReference.cache
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\obj\Debug\Logic.csproj.CoreCompileInputs.cache
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\obj\Debug\Logic.csproj.CopyComplete
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\obj\Debug\Zad1.dll
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Zad1\obj\Debug\Zad1.pdb

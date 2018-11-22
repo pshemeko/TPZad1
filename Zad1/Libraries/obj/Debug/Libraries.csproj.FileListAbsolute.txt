@@ -1,0 +1,6 @@
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\bin\Debug\Libraries.dll
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\bin\Debug\Libraries.pdb
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\obj\Debug\Libraries.csprojAssemblyReference.cache
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\obj\Debug\Libraries.csproj.CoreCompileInputs.cache
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\obj\Debug\Libraries.dll
+D:\Repozytoria\git\technologie Programowania\TPZad1\Zad1\Libraries\obj\Debug\Libraries.pdb
