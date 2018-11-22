@@ -15,24 +15,18 @@ namespace Libraries
         public Uzytkownik Kto { get; set; }
         public Egzemplarz Co { get; set; }
 
-        //public Zdarzenie(Uzytkownik k, Egzemplarz e)
-        //{
-        //    kto = k;
-        //    co = e;
-        //}
 
 
         public  virtual string ToString()
         {
-            //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-            string s = Co.ToString();// + " Data wypożyczenia " + kiedyWypozyczyl.ToString();
+
+            string s = Co.ToString();
             return s + "\n";
         }
 
         public virtual string WypiszWszystko()
         {
-            //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-            string s = Kto.ToString() + " Pozyczyl: " + Co.ToString();// + " Data wypożyczenia " + kiedyWypozyczyl.ToString();
+            string s = Kto.ToString() + " Pozyczyl: " + Co.ToString();
             return s + "\n";
         }
 
@@ -41,7 +35,7 @@ namespace Libraries
             if (obj is Zdarzenie)
             {
                 var tmp = (Zdarzenie)obj;
-                return kto.Equals(tmp.kto) && co.Equals(tmp.co);// && kiedyWypozyczyl.Equals(tmp.kiedyWypozyczyl);
+                return kto.Equals(tmp.kto) && co.Equals(tmp.co);
             }
             else
             {

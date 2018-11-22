@@ -27,7 +27,7 @@ namespace Libraries
         }
 
         public Ksiazka(int id, string tytul, Rodzaj rodzajEgz, int iloscStron, string imieAutora, string nazwiskoAutora, string isbn)
-            :base(id,tytul)//,rodzajEgz)
+            :base(id,tytul)
         {
             this.iloscStron = iloscStron;
             this.imieAutora = imieAutora;
@@ -36,7 +36,7 @@ namespace Libraries
             this.RodzajEgz = rodzajEgz;
         }
 
-        // ajo ctor na potrzeby XML bez rodzaju
+
         public Ksiazka(int id, string tytul, int iloscStron, string imieAutora, string nazwiskoAutora, string isbn)
     : base(id, tytul)
         {

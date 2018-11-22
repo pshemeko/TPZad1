@@ -11,12 +11,8 @@ namespace Libraries
     {
         protected int id; //klucz
         protected string tytul;
-        //protected Boolean stan;
-        //protected Boolean zarezerwowany;
-        //protected Rodzaj rodzajEgz; 
-        
+ 
 
-        //public int Id //{ get; set; }
         public int Id
         {
             get { return id; }
@@ -24,20 +20,7 @@ namespace Libraries
         }
 
         public string Tytul { get; set; }
-        //public Boolean Stan { get; set; }
-        //public Boolean Zarezerwowany { get; set; }
-        //public Rodzaj RodzajEgz {get; set;}
-       
-
-        //public Egzemplarz(int id, string tytul,Rodzaj rodzajEgz)
-        //{
-        //    this.id = id;
-        //    this.tytul = tytul;
-        //    this.rodzajEgz = rodzajEgz;
-        //   // this.licznikWypozyczen = 0;
-        //}
-
-        // ajo ctor na potrzemy XMLa bez rodzaju
+        
         public Egzemplarz(int id, string tytul)
         {
             this.id = id;
@@ -50,15 +33,6 @@ namespace Libraries
         public override string ToString()
         {
             string ret = "Id: " + id.ToString() ;
-            //if (stan)
-            //{
-            //    ret += " Egzmplarz dostepny";
-            //}
-            //else {
-            //    ret += " Egzemplarz Niedostepny";
-            //}
-
-            //if (zarezerwowany) ret += " Egzemplarz ZAREZERWOWANY!";
 
             ret += " Tytul: " + tytul.ToString();
             return ret;
@@ -69,7 +43,7 @@ namespace Libraries
             if (obj is Egzemplarz)
             {
                 var tempBook = (Egzemplarz)obj;
-                return id.Equals(tempBook.id) && tytul.Equals(tempBook.tytul); //&& rodzajEgz.Equals(tempBook.rodzajEgz);//&& licznikWypozyczen.Equals(tempBook.licznikWypozyczen) 
+                return id.Equals(tempBook.id) && tytul.Equals(tempBook.tytul); 
             }
             else
             {

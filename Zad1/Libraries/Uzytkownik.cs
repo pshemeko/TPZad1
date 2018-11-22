@@ -13,7 +13,7 @@ namespace Libraries
         private int pesel;
         private string adres;
 
-        // ajo na potrzeby XML
+
         public Uzytkownik(string imie, string nazwisko, int pesel, string adres)
         {
             this.imie = imie;
@@ -22,7 +22,6 @@ namespace Libraries
             this.adres = adres;
         }
 
-        //pusty by to co wczesniej sie kompilowalo
         public Uzytkownik()
         {
 

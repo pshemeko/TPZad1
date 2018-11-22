@@ -15,7 +15,7 @@ namespace Libraries
         public string KtoCzyta { get; set; }
 
         public Audiobook(int id, string tytul, Rodzaj rodzajEgz, int iloscMinut, string ktoCzyta)
-    : base(id, tytul) //, rodzajEgz)
+    : base(id, tytul) 
         {
             this.ilossMinut = iloscMinut;
             this.ktoCzyta = ktoCzyta;

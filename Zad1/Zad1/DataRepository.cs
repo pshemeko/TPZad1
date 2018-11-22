@@ -28,8 +28,8 @@ namespace Logic
         }
 
 
-        
-        // ******************** Add
+
+        // ******************** Add ********************
 
         public void AddUzytkownika(Uzytkownik uz)
         {
@@ -52,7 +52,7 @@ namespace Logic
         }
 
 
-        /// ******************************** Get
+        /// ******************************** Get ********************
 
         public Uzytkownik GetUzytkownika(int pesel) 
         {
@@ -83,7 +83,7 @@ namespace Logic
         }
 
 
-        // ******************** GET ALL
+        // ******************** GET ALL ********************
 
         public List<Uzytkownik> GetAllUzytkownikow()
         {
@@ -111,7 +111,7 @@ namespace Logic
         }
 
 
-        // ******************** Update
+        // ******************** Update ********************
 
         public void UpdateUzytkownik(Uzytkownik stary, Uzytkownik nowy)
         {
@@ -156,8 +156,8 @@ namespace Logic
             stary.Dostepna = nowy.Dostepna;
         }
 
-        ////// 
-        // ******************** Delete
+
+        // ******************** Delete ********************
 
         public Boolean DeleteUzytkownik(Uzytkownik uz)
         {
@@ -169,7 +169,7 @@ namespace Logic
             return dataContext.egzemplarze.Remove(klucz);
         }
 
-        //// ******************** rozmiar
+        // ******************** rozmiar ********************
 
         public int SizeOfUzytkownicy()
         {
@@ -190,8 +190,8 @@ namespace Logic
         {
             return dataContext.opisStanow.Count;
         }
-        
-        //// ******************** wyswietlanie
+
+        // ******************** wyswietlanie ********************
 
         public string pokaz_wszystkich_uzytkownikow()
         {

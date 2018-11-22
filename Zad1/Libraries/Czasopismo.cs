@@ -16,7 +16,7 @@ namespace Libraries
 
 
         public Czasopismo(int id, string tytul, string wydanie,  string isbn)
-            : base(id, tytul)//, rodzajEgz)
+            : base(id, tytul)
         {
             this.wydanie = wydanie;
             this.isbn = isbn;

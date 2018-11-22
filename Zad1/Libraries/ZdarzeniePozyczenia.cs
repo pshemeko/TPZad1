@@ -10,31 +10,22 @@ namespace Libraries
     {
         protected DateTime kiedyWypozyczyl;
 
-        public DateTime KiedyWypozyczyl // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
+        public DateTime KiedyWypozyczyl 
         {
             get { return kiedyWypozyczyl; }
             set { kiedyWypozyczyl = value; }
         }
 
-        //public ZdarzeniePozyczenia(Uzytkownik k, Egzemplarz e, DateTime dat)
-        //    :base(k,e)
-        //{
-        //    kiedyWypozyczyl = dat;
-        //}
 
         public override string ToString()
         {
-            //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-            //string s = Co.ToString() + " Data wypożyczenia " + kiedyWypozyczyl.ToString();
-            //return s + "\n";
+
             return base.ToString() + " Data wypożyczenia " + kiedyWypozyczyl.ToString(); ;
         }
 
         public override string WypiszWszystko()
         {
-            //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-            //string s = Kto.ToString() + " Pozyczyl: " + Co.ToString() + " Data wypożyczenia " + kiedyWypozyczyl.ToString();
-            //return s + "\n";
+
             return base.WypiszWszystko() + " Data wypożyczenia " + kiedyWypozyczyl.ToString(); ;
         }
 

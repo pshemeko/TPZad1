@@ -13,8 +13,8 @@ namespace Logic
 {
     class WypelnianieXMLLinq : IWypelnianie
     {
-        ///////   Klasy potrzebne do wczytywania z XML
-        
+        //********************   Klasy potrzebne do wczytywania z XML********************
+
         public class PotrzebnaDoSynchronizacjiZdarzenPozyczen
         {
             public int Osoba { get; set; }
@@ -33,9 +33,6 @@ namespace Logic
         {
             public int Osoba { get; set; }
             public int Ksiazka { get; set; }
-            //public string Wypoz { get; set; }
-            //public string Zwrot { get; set; }
-            //public DateTime Wypoz { get; set; }
             public DateTime Zwrot { get; set; }
             public int Kar { get; set; }
 
@@ -43,7 +40,6 @@ namespace Logic
             {
                 this.Osoba = os;
                 this.Ksiazka = ks;
-                //this.Wypoz = dw;
                 this.Zwrot = dz;
                 this.Kar = ka;
             }
@@ -92,14 +88,13 @@ namespace Logic
         }
 
 
-        //********************* Główna metoda
-        
-         public void Wypelnij(ref DataContext contex)
+        //********************* Główna metoda *********************
+
+        public void Wypelnij(ref DataContext contex)
         {
 
-            //**************************** Dodajemy osoby
-            XDocument xml = XDocument.Load(@"..\xml\Dane.xml");  //    ..\..\xml\Dane.xml");
-            //XDocument ddd;
+        //********************* Dodajemy osoby*********************
+            XDocument xml = XDocument.Load(@"..\xml\Dane.xml");  
             List<Uzytkownik> listaU = (
                 from osoba in xml.Root.Elements("osoba")
                 select new Uzytkownik
@@ -117,13 +112,12 @@ namespace Logic
                 contex.listaUzytkownikow.Add(listaU.ElementAt(i));
             }
 
-            ////////////////////////////////////////////////////////////////////////////
-            
-            //**************************** Dodajemy ksiazki
+
+            //**************************** Dodajemy ksiazki *********************
 
 
 
-        List<Ksiazka> lista = (
+            List<Ksiazka> lista = (
             from ksiazka in xml.Root.Elements("ksiazka")
             select new Ksiazka
                 (
@@ -146,8 +140,7 @@ namespace Logic
 
             }
 
-            ////////////////////////////////////////////////////////////////////////////
-            //**************************** Dodajemy zwroty
+            //**************************** Dodajemy zwroty *********************
 
 
             List<PotrzebnaDoSynchronizacjiZdarzenZwrotu> listaZ = (
@@ -156,7 +149,6 @@ namespace Logic
                 (
                 int.Parse(zdarz.Element("kto").Value),
                 int.Parse(zdarz.Element("co").Value),
-               // DateTime.Parse(zdarz.Element("kiedyWypozyczyl").Value),
                 DateTime.Parse(zdarz.Element("kiedyZwrocil").Value),
                 int.Parse(zdarz.Element("kara").Value)
                 )
@@ -179,9 +171,8 @@ namespace Logic
                 }
                 // tworze zdarzenie z predykatow
                 ZdarzenieZwrotu zd = new ZdarzenieZwrotu();
-                zd.Co = lista.Find(predykatK);//  listaZ.ElementAt(i)
+                zd.Co = lista.Find(predykatK);
                 zd.Kto = listaU.Find(predykatU);
-                //zd.KiedyWypozyczyl = Convert.ToDateTime(listaZ.ElementAt(i).Wypoz);
                 zd.KiedyZwrocil = Convert.ToDateTime(listaZ.ElementAt(i).Zwrot); 
                 zd.Kara = listaZ.ElementAt(i).Kar;
 
@@ -189,8 +180,7 @@ namespace Logic
                 contex.zdarzenia.Add(zd);
             }
 
-            ////////////////////////////////////////////////////////////////////////////
-            //**************************** Dodajemy pozyczenia
+            //**************************** Dodajemy pozyczenia ****************************
 
 
             List<PotrzebnaDoSynchronizacjiZdarzenPozyczen> listaPoz = (
@@ -220,7 +210,7 @@ namespace Logic
                 }
                 // tworze zdarzenie z predykatow
                 ZdarzeniePozyczenia zd = new ZdarzeniePozyczenia();
-                zd.Co = lista.Find(predykatK);//  listaZ.ElementAt(i)
+                zd.Co = lista.Find(predykatK);
                 zd.Kto = listaU.Find(predykatU);
                 zd.KiedyWypozyczyl = Convert.ToDateTime(listaPoz.ElementAt(i).Wypoz);
 
@@ -229,9 +219,7 @@ namespace Logic
             }
 
 
-
-            ////////////////////////////////////////////////////////////////////////////
-            //**************************** Dodajemy opisy Egzemplarza
+            //**************************** Dodajemy opisy Egzemplarza *********************
 
 
             List<PotrzebnaDoSynchronizacjiOpisuEgzemplarza> listaO = (
@@ -260,14 +248,12 @@ namespace Logic
                 
                 // tworze zdarzenie z predykatow
                 OpisStanuEgzemplarza op = new OpisStanuEgzemplarza();
-                op.KtoryEgzemplarz = lista.Find(predykatK);//  listaZ.ElementAt(i)
-                //----op.Kto = listaU.Find(predykatU);
+                op.KtoryEgzemplarz = lista.Find(predykatK);
                 op.DataZakupu = Convert.ToDateTime(listaO.ElementAt(i).DataZakupu);
                 op.Dostepna = listaO.ElementAt(i).Dostepna;
                 op.OpisStanu = listaO.ElementAt(i).OpisStanu;
                 op.LicznikWypozyczen = listaO.ElementAt(i).LicznikWypozyczen;
 
-                //dodaje do repozytorium
                 contex.opisStanow.Add(op);
             }
 

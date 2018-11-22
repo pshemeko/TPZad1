@@ -11,28 +11,14 @@ namespace Libraries
         protected DateTime kiedyZwrocil;
         protected int kara;
 
-        //public ZdarzenieZwrotu(Uzytkownik k, Egzemplarz e, DateTime dat, int kar)
-        //    : base(k, e)
-        //{
-        //    kiedyZwrocil = dat;
-        //    kara = kar;
-        //}
+       
 
-        //public Zdarzenie (Uzytkownik uzytkownik, Egzemplarz egzemplarz, DateTime dataWypozyczenia, DateTime dataZwrotu, int kara)
-        //{
-        //    this.kto = uzytkownik;
-        //    this.co = egzemplarz;
-        //    this.kiedyWypozyczyl = dataWypozyczenia;
-        //    this.kiedyZwrocil = dataZwrotu;
-        //    this.kara = kara;                 
-        //}
-
-        public DateTime KiedyZwrocil    // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
+        public DateTime KiedyZwrocil   
             {
                 get { return kiedyZwrocil; }
                 set { kiedyZwrocil = value; }
             }
-        public int Kara                 // musi byc tak pobieranie i zwracanie bo inaczej zle pobiera i zwraca
+        public int Kara                
             {
                 get { return kara; }
                 set { kara = value; }
@@ -40,9 +26,7 @@ namespace Libraries
 
         public override string ToString()
         {
-            //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-            //string s = Co.ToString() + " Data wypożyczenia " + kiedyWypozyczyl.ToString();
-            //if(!kiedyWypozyczyl.Equals(kiedyZwrocil)) s+= " Data zwrotu " + kiedyZwrocil;
+
             string s = base.ToString();
             s += " Data zwrotu " + kiedyZwrocil;
             if (kara>0) s+= " kara: " + kara + "zł.";
@@ -51,9 +35,7 @@ namespace Libraries
 
         public string WypiszWszystko()
         {
-            //string s = "Wypożyczone przez: " + kto + // nie musze wyswietlac danych osoby
-            //string s = Kto.ToString() + " Pozyczyl: " + Co.ToString() + " Data wypożyczenia " + kiedyWypozyczyl.ToString();
-            //if (!kiedyWypozyczyl.Equals(kiedyZwrocil)) s += " Data zwrotu " + kiedyZwrocil;
+
             string s = base.WypiszWszystko();
             s += " Data zwrotu " + kiedyZwrocil;
             if (kara > 0) s += " kara: " + kara + "zł.";

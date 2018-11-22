@@ -117,13 +117,12 @@ namespace Logic
             Boolean usunieto = false;
             if (!repozytorium.DeleteUzytkownik(uz))
             {
-                //throw new ArgumentException("Nie ma w repozytorium uzytkownika" + uz.ToString());
                 usunieto = true;
             }
             return usunieto;
         }
 
-        public Boolean DodajUzytkownika(Uzytkownik uz) // TODO  przerobic na bool zamiast rzucania wyjatkow
+        public Boolean DodajUzytkownika(Uzytkownik uz) 
         {
             Boolean dodano = false;
             if (! (repozytorium.GetAllUzytkownikow().Contains(uz)))
@@ -132,7 +131,7 @@ namespace Logic
                 dodano = true;
             }
             return dodano;
-            //else throw new ArgumentException("ten uzytkonik juz jest w repozytorium" + uz.ToString());
+
         }
 
         public Boolean ZmienNazwiskoUzytkownika(Uzytkownik uz, string nazw)   
@@ -146,7 +145,7 @@ namespace Logic
                 zmieniono = true;
             }
             return zmieniono;
-            //else throw new ArgumentException("tego uzytkownika nie ma w repozytorium" + uz.ToString());
+
         }
 
         public List<Uzytkownik> ZwrocWszystkichUzytkownikow()
@@ -206,7 +205,6 @@ namespace Logic
                     zd.Co = eg;
                     zd.Kto = uz;
                     zd.KiedyWypozyczyl = DateTime.Now;
-                    //zd.KiedyZwrocil = zd.KiedyWypozyczyl;
 
                     repozytorium.AddZdarzenie(zd);
 
@@ -223,24 +221,7 @@ namespace Logic
 
         public bool Zwroc(Uzytkownik uz, Egzemplarz eg) 
         {
-            /* IEnumerable<Zdarzenie> zdarzylySie = this.repozytorium.GetAllZdarzenia();
-             foreach (var item in zdarzylySie)
-             {
-                 if (item.Co == eg && item.Kto == uz)    // gdy znajde tego uzytkownika i ten egzemplarz
-                 {
-                     if(item.KiedyWypozyczyl == item.KiedyZwrocil) // i gdy to zdarzenie jest ostatnio dodane tj nie jest wczesniejszy wypozyczeniem ksiazki
-                                                                     // bo cyba przy utworzeniu nowego data zwrtu est ta sama co wypozyczenia
-                     {
-                         item.KiedyZwrocil = DateTime.Now;
-                         var roznica = (item.KiedyZwrocil - item.KiedyWypozyczyl).TotalDays;
-                         if ( roznica > Constans.LIMIT_DNI_WYPOZYCZENIA)
-                         {
-                             item.Kara = (int)roznica * Constans.KWOTA_KARY_ZA_DZIEN;
-                         }
-                     }
-                 }
-             }
-             */
+            
             Boolean CzyZwrocil = false;
 
             if (repozytorium.GetAllUzytkownikow().Contains(uz))
@@ -260,14 +241,12 @@ namespace Logic
                     ZdarzenieZwrotu zd = new ZdarzenieZwrotu();
                     zd.Co = eg;
                     zd.Kto = uz;
-                    //zd.KiedyWypozyczyl = DateTime.Now;// TODO - - zmienic na wczesniejsza ate z innego zdarzenia pozyczenia
                     zd.KiedyZwrocil = DateTime.Now;
 
                     repozytorium.AddZdarzenie(zd);
 
                     znalezionyOpis.Dostepna = true;
                     CzyZwrocil = true;
-                    //znalezionyOpis.LicznikWypozyczen = znalezionyOpis.LicznikWypozyczen + 1;    // zwiekrzam licznik wyypozyczen
                 }
             }
             return CzyZwrocil;
@@ -290,8 +269,7 @@ namespace Logic
             return lis;
         }
 
-        
-        // wyswietlic wszystkie wypozyczenia (zdarzenia) uzytkownika
+
         
     }
 }

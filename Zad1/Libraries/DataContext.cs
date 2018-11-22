@@ -22,7 +22,7 @@ namespace Libraries
             zdarzenia = new ObservableCollection<Zdarzenie>();
             opisStanow = new List<OpisStanuEgzemplarza>();
 
-            //TODO moze dodac jeszcze info przy akcjach dziejacych sie pdczas ObservableCollection np dodawaniu
+            
         }
 
     }

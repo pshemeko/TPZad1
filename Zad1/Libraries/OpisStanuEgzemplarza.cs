@@ -8,11 +8,7 @@ namespace Libraries
 {
     public class OpisStanuEgzemplarza
     {
-        //protected Egzemplarz ktoryEgzemplarz;
-        //protected DateTime dataZakupu;
-        //protected Boolean dostepna; // czy egzemplarz jest dostepny
-        //protected string opisStanu; // w jakim jest stanie co zniszczone
-        //protected int licznikWypozyczen;
+
 
         public Egzemplarz KtoryEgzemplarz { get; set; }
         public DateTime DataZakupu { get; set; }
