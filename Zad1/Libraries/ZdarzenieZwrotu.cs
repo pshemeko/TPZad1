@@ -33,7 +33,7 @@ namespace Libraries
             return s + "\n";
         }
 
-        public string WypiszWszystko()
+        public override string WypiszWszystko()
         {
 
             string s = base.WypiszWszystko();
